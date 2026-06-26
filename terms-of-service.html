@@ -4,87 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Terms of Service | MARZOFT TECHNOLOGIES</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
-                    },
-                    colors: {
-                        brand: { dark: '#030303', neon: '#CCFF00', cyan: '#00f0ff' }
-                    }
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    colors: { brand: { dark: '#030303', neon: '#CCFF00', cyan: '#00f0ff' } }
                 }
             }
         }
     </script>
-
     <style>
         body { background-color: #030303; color: #ffffff; overflow-x: hidden; }
-        .grid-bg {
-            background-size: 20px 20px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
-        }
-        .spatial-glass-card {
-            background: rgba(10, 10, 12, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
-        .glow-orb {
-            position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
-        }
+        .grid-bg { background-size: 20px 20px; background-image: linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px); }
+        .spatial-glass-card { background: rgba(10, 10, 12, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05); }
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
     </style>
 </head>
 <body class="relative min-h-screen flex flex-col items-center py-20 px-4 sm:px-6 lg:px-8 selection:bg-brand-neon selection:text-black">
-    
-    <!-- Background Elements -->
     <div class="fixed inset-0 grid-bg z-0 pointer-events-none"></div>
     <div class="glow-orb w-[500px] h-[500px] bg-brand-neon/5 top-0 right-0"></div>
     <div class="glow-orb w-[600px] h-[600px] bg-blue-500/5 bottom-0 left-0"></div>
 
-    <!-- Navigation Hub -->
     <div class="w-full max-w-4xl relative z-20 mb-8">
-        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-brand-neon transition-colors duration-300 uppercase tracking-widest border border-white/10 hover:border-brand-neon/30 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
+        <a href="index.html#contact" class="inline-flex items-center gap-2 text-[10px] font-mono text-gray-400 hover:text-brand-neon transition-colors duration-300 uppercase tracking-widest border border-white/10 hover:border-brand-neon/30 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
             <span>←</span> Back to Hub
         </a>
     </div>
 
-    <!-- Main Content Panel -->
-    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-8 md:p-12 lg:p-16 relative z-10">
-        
-        <header class="border-b border-white/10 pb-8 mb-10">
-            <span class="block font-mono text-[10px] md:text-xs text-brand-neon tracking-[0.2em] uppercase mb-4">// LEGAL_BOUNDARIES_ENGAGEMENT //</span>
-            <h1 class="font-orbitron text-3xl md:text-5xl font-black tracking-wider uppercase text-white mb-4">Terms of Service</h1>
-            <p class="font-mono text-xs text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
+    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-8 md:p-12 relative z-10">
+        <header class="border-b border-white/10 pb-6 mb-8">
+            <h1 class="font-orbitron text-2xl md:text-3xl font-black tracking-wider uppercase text-white mb-3">Terms of Service</h1>
+            <p class="font-mono text-[9px] md:text-[10px] text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
         </header>
 
-        <div class="space-y-10 text-gray-300 text-sm md:text-base leading-relaxed font-sans">
-            
+        <div class="space-y-8 text-gray-400 text-xs md:text-[13px] leading-relaxed font-sans">
             <p>By visiting our web portal, using our project estimators, or onboarding onto any custom Software-as-a-Service (SaaS) web platforms built by Marzoft Technologies ("Marzoft"), you agree to these Terms of Service.</p>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">1. SERVICE MODELS & CODE OWNERSHIP</h2>
-                <p class="mb-4">Marzoft provides high-tier custom web designing, interactive WebGL/Three.js styling, and multi-tenant web SaaS applications.</p>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">1. SERVICE MODELS & CODE OWNERSHIP</h2>
+                <p class="mb-3">Marzoft provides high-tier custom web designing, interactive WebGL/Three.js styling, and multi-tenant web SaaS applications.</p>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>Custom Web Work:</strong> Handcrafted design components and codebase files are fully transferred to client ownership once final payments are cleared.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>Web SaaS Products:</strong> Signing up for our software platforms gives you a non-transferable right to access the cloud dashboard tool. Core system codebases, master database architectures, and original repositories remain the exclusive property of Marzoft. Reverse-engineering system scripts or white-labeling our platform is forbidden.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">2. DIRECT UPI SETTLING ARCHITECTURE</h2>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">2. DIRECT UPI SETTLING ARCHITECTURE</h2>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>Coded Custom Web Work:</strong> Operates on a fixed milestone model. A 50% advance deposit is required to book a schedule slot and register global host settings. The residual 50% balance clears once staging previews are approved, before files go live.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>SaaS Licensing:</strong> System workspaces operate on an upfront renewal calendar. If manual renewals are missed, system parameters will automatically lock dashboard modules past a seven (7) day grace line.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>UPI & QR Framework:</strong> All billing events across our sites require direct manual execution via a secure UPI QR scan code or upi:// deep-link trigger.</span></li>
@@ -92,8 +64,8 @@
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">3. THE 3-REVISION PROTOCOL, SANDBOX TRIALS & MAINTENANCE</h2>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">3. THE 3-REVISION PROTOCOL, SANDBOX TRIALS & MAINTENANCE</h2>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>Project Development Stage:</strong> Custom web clients get up to three (3) free rounds of visual or text updates based on their original brief. Any additional layout edits requested past this cap require separate development fees.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>14-Day Temporary Trials:</strong> If a software framework layout is specifically issued inside a 14-day trial preview path, the user is permitted a maximum limit of up to three (3) structural changes during that active test buffer.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span><strong>Launch Zero Balance Clause:</strong> The moment your custom web application is deployed live on your custom domain, free post-delivery code support scales to zero (0). All updates or subsequent additions require independent service fees.</span></li>
@@ -101,8 +73,8 @@
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">4. 30-DAY COLD PROJECT FREEZING & REACTIVATION PENALTY</h2>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">4. 30-DAY COLD PROJECT FREEZING & REACTIVATION PENALTY</h2>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span>Custom web design clients must deliver all project assets (such as finalized logos, copy strings, menus, and layout items) in a timely manner.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span>If a client goes silent, stops responding, or delays asset delivery for thirty (30) straight calendar days, their project automatically drops into a "Frozen Staging State."</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-neon font-mono mt-0.5">▹</span> <span>Unfreezing a project requires a mandatory penalty charge of ₹500 via UPI to re-queue the development pipeline.</span></li>
@@ -110,20 +82,19 @@
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">5. LIABILITY LIMITATIONS & THIRD-PARTY ISOLATION</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">5. LIABILITY LIMITATIONS & THIRD-PARTY ISOLATION</h2>
                 <p>We optimize layouts for top mobile loading speeds over high-speed networks. However, Marzoft functions purely as an architectural coding layer. We are not liable for bank network errors, UPI application bugs, host server downtimes, domain registry connectivity drops, or user configuration errors from third-party networks (such as GoDaddy or Hostinger India).</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">6. LEGAL GOVERNING LAW & COURT JURISDICTION</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">6. LEGAL GOVERNING LAW & COURT JURISDICTION</h2>
                 <p>Marzoft operates purely as an online business startup venture. These Terms of Service are governed by, and interpreted in full accordance with, the laws of the Republic of India. Any contractual disputes, arbitrations, or legal claims arising out of our remote web solutions or SaaS product portals shall be subject exclusively to the local court jurisdiction of Salem, Tamil Nadu, India.</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">7. COMPLIANCE DISPATCH</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">7. COMPLIANCE DISPATCH</h2>
                 <p>For formal system status validations or contract alignments, reach out to us at rmaaz1612@gmail.com.</p>
             </section>
-
         </div>
     </main>
 </body>

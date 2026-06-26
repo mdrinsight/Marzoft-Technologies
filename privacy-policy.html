@@ -4,117 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Privacy Policy | MARZOFT TECHNOLOGIES</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
-                    },
-                    colors: {
-                        brand: { dark: '#030303', neon: '#CCFF00', cyan: '#00f0ff' }
-                    }
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    colors: { brand: { dark: '#030303', neon: '#CCFF00', cyan: '#00f0ff' } }
                 }
             }
         }
     </script>
-
     <style>
         body { background-color: #030303; color: #ffffff; overflow-x: hidden; }
-        .grid-bg {
-            background-size: 20px 20px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
-        }
-        .spatial-glass-card {
-            background: rgba(10, 10, 12, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
-        .glow-orb {
-            position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
-        }
+        .grid-bg { background-size: 20px 20px; background-image: linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px); }
+        .spatial-glass-card { background: rgba(10, 10, 12, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05); }
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
     </style>
 </head>
 <body class="relative min-h-screen flex flex-col items-center py-20 px-4 sm:px-6 lg:px-8 selection:bg-brand-cyan selection:text-black">
-    
-    <!-- Background Elements -->
     <div class="fixed inset-0 grid-bg z-0 pointer-events-none"></div>
     <div class="glow-orb w-[500px] h-[500px] bg-brand-cyan/5 top-0 left-0"></div>
     <div class="glow-orb w-[600px] h-[600px] bg-purple-500/5 bottom-0 right-0"></div>
 
-    <!-- Navigation Hub -->
     <div class="w-full max-w-4xl relative z-20 mb-8">
-        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-brand-cyan transition-colors duration-300 uppercase tracking-widest border border-white/10 hover:border-brand-cyan/30 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
+        <a href="index.html#contact" class="inline-flex items-center gap-2 text-[10px] font-mono text-gray-400 hover:text-brand-cyan transition-colors duration-300 uppercase tracking-widest border border-white/10 hover:border-brand-cyan/30 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
             <span>←</span> Back to Hub
         </a>
     </div>
 
-    <!-- Main Content Panel -->
-    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-8 md:p-12 lg:p-16 relative z-10">
-        
-        <header class="border-b border-white/10 pb-8 mb-10">
-            <span class="block font-mono text-[10px] md:text-xs text-brand-cyan tracking-[0.2em] uppercase mb-4">// SECURE_ARCHIVE_DATA //</span>
-            <h1 class="font-orbitron text-3xl md:text-5xl font-black tracking-wider uppercase text-white mb-4">Privacy Policy</h1>
-            <p class="font-mono text-xs text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
+    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-8 md:p-12 relative z-10">
+        <header class="border-b border-white/10 pb-6 mb-8">
+            <h1 class="font-orbitron text-2xl md:text-3xl font-black tracking-wider uppercase text-white mb-3">Privacy Policy</h1>
+            <p class="font-mono text-[9px] md:text-[10px] text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
         </header>
 
-        <div class="space-y-10 text-gray-300 text-sm md:text-base leading-relaxed font-sans">
-            
+        <div class="space-y-8 text-gray-400 text-xs md:text-[13px] leading-relaxed font-sans">
             <p>Welcome to Marzoft Technologies ("we," "our," or "us"). We operate strictly as an online web engineering studio and Software-as-a-Service (SaaS) provider based in Salem, Tamil Nadu, India. This Privacy Policy details how we handle data inputs across our flagship site (https://marzoft.in) and our independent cloud software application platforms.</p>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">1. DATA COLLECTION FRAMEWORK</h2>
-                <p class="mb-4">As a purely online, remote, and distributed tech team, we do not require physical check-ins. We only process data that you explicitly choose to provide:</p>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">1. DATA COLLECTION FRAMEWORK</h2>
+                <p class="mb-3">As a purely online, remote, and distributed tech team, we do not require physical check-ins. We only process data that you explicitly choose to provide:</p>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span><strong>Project Form Inputs:</strong> Name, email address, WhatsApp telephone number, project briefs, and milestone deadlines entered via our dynamic layout estimators.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span><strong>SaaS Product Account Tiers:</strong> Merchant account names, dashboard workspace labels, localized store product catalogs, business UPI IDs, and configuration metadata required to run remote app instances.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">2. PAYMENT TRANSPARENCY & ZERO GATEWAY DATA STORAGE</h2>
-                <p class="mb-4">Marzoft Technologies does NOT track, capture, process, or store credit card numbers, net banking passwords, or payment profiles.</p>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">2. PAYMENT TRANSPARENCY & ZERO GATEWAY DATA STORAGE</h2>
+                <p class="mb-3">Marzoft Technologies does NOT track, capture, process, or store credit card numbers, net banking passwords, or payment profiles.</p>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span><strong>100% Direct Architecture:</strong> Every billing event, custom website deposit, and SaaS workspace licensing renewal happens exclusively over manual peer-to-peer UPI intent deep-links and direct on-screen QR code graphics.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span><strong>Security Isolation:</strong> Financial transactions are entirely executed directly inside your secure, bank-verified payment software (such as Google Pay, PhonePe, PayTM, or BHIM). We receive zero financial data streams from your personal device.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">3. DATA PROTECTION & DISCLOSURE</h2>
-                <p class="mb-4">We treat your structural business setups with strict care:</p>
-                <ul class="space-y-3 ml-2">
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">3. DATA PROTECTION & DISCLOSURE</h2>
+                <p class="mb-3">We treat your structural business setups with strict care:</p>
+                <ul class="space-y-2 ml-2">
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span>We implement multi-tenant database isolation boundaries to ensure workspace files are safely segmented from other platform tenants.</span></li>
                     <li class="flex items-start gap-3"><span class="text-brand-cyan font-mono mt-0.5">▹</span> <span>We do not sell, rent, trade, market, or leak your personal details, project requirements, or workspace accounts to external advertising networks or data brokers.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">4. COOKIES & TRAFFIC METRICS</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">4. COOKIES & TRAFFIC METRICS</h2>
                 <p>Our high-performance single-page architecture utilizes minimal functional cookies strictly to maintain user dashboard logins and remember active screen views. We may evaluate anonymous aggregate website traffic volume levels purely to safeguard host server speeds. You can flush local browser cache folders or change cookie behaviors at any time in your browser settings.</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">5. ONLINE WORKSPACE PRIVACY EXEMPTION</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">5. ONLINE WORKSPACE PRIVACY EXEMPTION</h2>
                 <p>Marzoft Technologies runs purely as an online venture. We maintain no brick-and-mortar public office or storefront for walk-ins. All operations are handled in digital environments, protecting personal privacy.</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-lg md:text-xl font-bold text-white tracking-wide uppercase mb-4">6. TECHNICAL DATA CONTACT</h2>
+                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">6. TECHNICAL DATA CONTACT</h2>
                 <p>For requests to change account data or ask privacy questions, message us directly via rmaaz1612@gmail.com.</p>
             </section>
-
         </div>
     </main>
 </body>
