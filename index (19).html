@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MARZOFT TECHNOLOGIES | Engineering Digital Luxury. Premium web engineering and spatial web design.">
+    <title>MARZOFT TECHNOLOGIES | Premium Web Engineering</title>
+    
+    <!-- Font Preconnections for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" display="swap">
+
+    <!-- Core Optimization Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#030303',
+                            surface: '#09090b',
+                            neon: '#CCFF00',
+                            gold: '#D4AF37',
+                            violet: '#8B5CF6',
+                            cyan: '#00f0ff',
+                            sapphire: '#0055ff',
+                            start: '#3b82f6',
+                            elite: '#E63946',
+                            pro: '#8B5CF6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #030303;
+            --glass-bg: rgba(10, 10, 10, 0.45);
+            --glass-blur: blur(24px) saturate(160%);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+            --glow-color: rgba(59, 130, 246, 0.3);
+        }
+
+        body { 
+            background: var(--bg-color); 
+            color: #fff; 
+            margin: 0; 
+            font-family: 'Space Grotesk', sans-serif; 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Strict GPU Hardware Acceleration Engine */
+        .gpu-accel {
+            will-change: transform, opacity;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .title-responsive { 
+            font-size: clamp(3rem, 12vw, 9rem); 
+            line-height: 0.85; 
+            letter-spacing: -0.04em; 
+        }
+
+        .grid-bg {
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
+        }
+
+        .premium-box { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 2rem; border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .click-through { pointer-events: none !important; }
+        .click-target { pointer-events: auto !important; }
+
+        .luxury-experience-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 24px;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+            cursor: pointer; position: relative; overflow: hidden; contain: content;
+            display: flex; flex-direction: column; text-align: left;
+            pointer-events: auto !important;
+            width: 100%;
+        }
+
+        .luxury-experience-card * { pointer-events: none !important; }
+
+        .wedding-suite-mockup { 
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.12), inset 0 1px 1px rgba(212, 175, 55, 0.15); 
+            border-color: rgba(212, 175, 55, 0.4); 
+        }
+        .wedding-suite-mockup:hover, .wedding-suite-mockup:focus-visible {
+            transform: translate3d(0, -6px, 0) scale(1.015);
+            box-shadow: 0 35px 80px rgba(212, 175, 55, 0.22), inset 0 1px 2px rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.8); outline: none;
+        }
+
+        .birthday-suite-mockup { 
+            box-shadow: 0 25px 60px rgba(0, 240, 255, 0.15), inset 0 1px 1px rgba(0, 240, 255, 0.15); 
+            border-color: rgba(0, 240, 255, 0.4); 
+        }
+        .birthday-suite-mockup:hover, .birthday-suite-mockup:focus-visible {
+            transform: translate3d(0, -6px, 0) scale(1.015);
+            box-shadow: 0 35px 80px rgba(0, 240, 255, 0.25), inset 0 1px 2px rgba(0, 240, 255, 0.35);
+            border-color: rgba(0, 240, 255, 0.8); outline: none;
+        }
+
+        /* Highly Compact Sizing Constraints (Invitations) */
+        .mockup-frame {
+            width: 100%; max-width: 135px; height: 180px; border-radius: 12px; margin: 0 auto;
+            position: relative; overflow: hidden; transform: translateZ(0);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.85);
+        }
+        .mockup-frame::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 38px; height: 7px; background: #0f0f11;
+            border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; z-index: 30;
+        }
+
+        .wedding-frame-bg { 
+            border: 1px solid rgba(212, 175, 55, 0.5); 
+            background: radial-gradient(circle at center, #15110d 0%, #070605 100%); 
+        }
+        @keyframes pulse-gold-halo { 0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.25; } 100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.6; } }
+        .wedding-halo {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100px; height: 100px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+            animation: pulse-gold-halo 5s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+        }
+        .wedding-emblem-box { position: absolute; inset: 8px; border: 1px solid rgba(212,175,55,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
+        .wedding-emblem { width: 18px; height: 18px; border: 1px solid #D4AF37; transform: rotate(45deg); margin-bottom: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 6px rgba(212,175,55,0.25); animation: spin-crest 20s linear infinite; }
+        @keyframes spin-crest { 0% { transform: rotate(45deg); } 100% { transform: rotate(405deg); } }
+        .wedding-emblem::after { content:''; width: 12px; height: 12px; border: 1px solid rgba(212,175,55,0.4); }
+        .wedding-text { font-family: 'Playfair Display', serif; font-style: italic; color: #D4AF37; font-size: 11px; text-align: center; line-height: 1.3; text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
+        @keyframes tick-colon { 50% { opacity: 0; } }
+        .wedding-ticker { font-family: 'Fira Code', monospace; color: #fff; font-size: 9px; margin-top: 4px; font-weight: 300; letter-spacing: 1px; }
+        .wedding-ticker span.colon { animation: tick-colon 1s infinite steps(1); color: #D4AF37; font-weight: bold; }
+
+        .birthday-frame-bg { border: 1px solid rgba(0, 240, 255, 0.5); background: radial-gradient(circle at center, #020a14 0%, #01040a 100%); }
+        @keyframes spin-gradient-loop { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .birthday-gradient-loop { position: absolute; inset: -100%; background: conic-gradient(from 0deg, #00f0ff, #8B5CF6, #0055ff, #00f0ff); animation: spin-gradient-loop 8s linear infinite; opacity: 0.25; mix-blend-mode: screen; filter: blur(20px); }
+        @keyframes bokeh-float { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 0.7; } 100% { transform: translateY(-130px) scale(1.4); opacity: 0; } }
+        .b-circle { position: absolute; border-radius: 50%; filter: blur(3px); mix-blend-mode: screen; animation: bokeh-float 5s ease-in-out infinite; }
+        .b1 { width: 14px; height: 14px; background: #00f0ff; left: 15%; bottom: -10%; animation-delay: 0s; }
+        .b2 { width: 18px; height: 18px; background: #00d2ff; right: 15%; bottom: -20%; animation-delay: 2s; }
+        .b3 { width: 10px; height: 10px; background: #0055ff; left: 45%; bottom: -15%; animation-delay: 1s; }
+        .birthday-panel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; padding: 8px 0; background: rgba(0,0,0,0.75); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 8px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10; }
+        .birthday-panel span { font-family: 'Orbitron', sans-serif; font-size: 7px; color: #fff; text-align: center; font-weight: 700; text-shadow: 0 0 12px #00f0ff; letter-spacing: 1px; line-height: 1.5; }
+
+        @keyframes sweep-shimmer { 0% { transform: translate3d(-150%, 0, 0) skewX(-25deg); } 50% { transform: translate3d(150%, 0, 0) skewX(-25deg); } 100% { transform: translate3d(150%, 0, 0) skewX(-25deg); } }
+        .shimmer-sweep::after { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 50%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent); animation: sweep-shimmer 4s infinite ease-in-out; pointer-events: none; z-index: 20; will-change: transform; }
+
+        .showcase-deck { perspective: 2000px; position: relative; width: 100%; height: 450px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
+        .showcase-slide-card { position: absolute !important; width: 100%; max-width: 360px; height: 420px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: var(--glass-border); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 30px 70px rgba(0, 0, 0, 0.85); border-radius: 24px; overflow: hidden; transform-origin: center center; cursor: pointer; contain: content; display: flex; flex-direction: column; text-align: left; pointer-events: auto !important; width: 100%; }
+        .showcase-slide-card * { pointer-events: none !important; }
+        .showcase-slide-card.active-focus { border-color: var(--glow-color) !important; box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 0 40px rgba(59, 130, 246, 0.15), 0 30px 70px rgba(0, 0, 0, 0.9) !important; }
+
+        .card-glare { position: absolute; inset: 0; pointer-events: none; z-index: 5; background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 25%, transparent 50%); mix-blend-mode: color-dodge; opacity: 0; transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .showcase-slide-card:hover .card-glare, .luxury-experience-card:hover .card-glare { opacity: 1; }
+
+        .pricing-section { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; background-color: #000; will-change: transform; transform: translateZ(0); }
+        .pricing-deck { max-width: 1100px; height: 560px; perspective: 1200px; }
+        .pricing-card { position: absolute; width: 330px; height: 520px; left: 50%; top: 50%; margin-left: -165px; margin-top: -260px; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2.25rem 2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); transition: border-color 0.4s, box-shadow 0.4s; }
+        .glow-field { position: absolute; inset: 0; border-radius: 16px; filter: blur(40px); opacity: 0.12; z-index: -1; pointer-events: none; transition: opacity 0.4s; }
+        .pricing-card:hover { background: rgba(255, 255, 255, 0.03); }
+
+        .glow-input:focus { border-color: #3b82f6 !important; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); outline: none; }
+
+        @keyframes pulse-ring { 0% { transform: scale(0.95); opacity: 0.5; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.5; } }
+        .pulse-loader { animation: pulse-ring 2s infinite ease-in-out; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .estimate-glow-start { text-shadow: 0 0 12px rgba(59, 130, 246, 0.6); }
+        .estimate-glow-pro { text-shadow: 0 0 12px rgba(204, 255, 0, 0.5); }
+        .estimate-glow-elite { text-shadow: 0 0 12px rgba(212, 175, 55, 0.6); }
+        .estimate-glow-wedding { text-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
+        .estimate-glow-birthday { text-shadow: 0 0 15px rgba(0, 240, 255, 0.8); }
+
+        @media (max-width: 768px) {
+            .pricing-deck { transform: scale(0.85); height: 480px; }
+            .pricing-card { width: 280px; height: 460px; margin-left: -140px; margin-top: -230px; padding: 1.5rem; }
+            .glow-field { filter: blur(15px); }
+            
+            .gpu-accel, .showcase-slide-card, .luxury-experience-card, .pricing-card, .premium-box, .spatial-glass-card { 
+                backdrop-filter: none !important; 
+                -webkit-backdrop-filter: none !important; 
+                background: #08080a !important; 
+                text-shadow: none !important;
+            }
+            .wedding-suite-mockup { box-shadow: 0 4px 20px rgba(0,0,0,0.9) !important; border-color: rgba(212, 175, 55, 0.45) !important; }
+            .birthday-suite-mockup { box-shadow: 0 4px 20px rgba(0,0,0,0.9) !important; border-color: rgba(0, 240, 255, 0.45) !important; }
+            .showcase-slide-card { box-shadow: 0 4px 20px rgba(0,0,0,0.9) !important; }
+            
+            /* Restored shine effect on mobile by excluding it from global suppression */
+            .card-glare { display: none !important; }
+            
+            /* Studio Mobile Modal Performance Overrides */
+            #neural-linkedin-modal {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(8, 8, 10, 0.98) !important; /* Static backdrop layer replaces complex blur */
+            }
+            #neural-window {
+                border-radius: 20px !important; /* Highly optimized physical render constraints */
+                box-shadow: 0 15px 35px rgba(0,0,0,0.95) !important; 
+                will-change: transform, opacity;
+                transform: translate3d(0, 0, 0);
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+        }
+        @media (max-width: 480px) { .pricing-deck { transform: scale(0.68); height: 400px; } }
+
+        .spatial-obsidian { background-color: #09090b; position: relative; overflow: hidden; }
+        .spatial-glow-orb-1 { position: absolute; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%); filter: blur(80px); top: -10%; right: -10%; pointer-events: none; z-index: 1; }
+        .spatial-glow-orb-2 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%); filter: blur(90px); bottom: -15%; left: -15%; pointer-events: none; z-index: 1; }
+        .spatial-glass-card { background: rgba(18, 18, 22, 0.45); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05); transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .spatial-glass-card:hover { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 40px 120px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.08); }
+        .spatial-input { will-change: transform, border-color, box-shadow; background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.08); transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .spatial-input::placeholder { color: rgba(255, 255, 255, 0.25); }
+        .spatial-input:focus { background-color: rgba(255, 255, 255, 0.03); border-color: rgba(59, 130, 246, 0.5) !important; box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 12px 30px rgba(59, 130, 246, 0.08); outline: none; }
+        
+        .minimal-tier-card { border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .minimal-tier-card:hover { background: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+        
+        .tier-start-spatial-active { border-color: rgba(59, 130, 246, 0.55) !important; background: rgba(59, 130, 246, 0.03); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1); transform: scale(1.02); }
+        .tier-pro-spatial-active { border-color: rgba(204, 255, 0, 0.55) !important; background: rgba(204, 255, 0, 0.03); box-shadow: 0 10px 30px rgba(204, 255, 0, 0.1); transform: scale(1.02); }
+        .tier-elite-spatial-active { border-color: rgba(212, 175, 55, 0.55) !important; background: rgba(212, 175, 55, 0.03); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1); transform: scale(1.02); }
+        
+        .tier-wedding-spatial-active { border-color: rgba(212, 175, 55, 0.55) !important; background: rgba(212, 175, 55, 0.03); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1); transform: scale(1.02); }
+        .tier-birthday-spatial-active { border-color: rgba(0, 240, 255, 0.55) !important; background: rgba(0, 240, 255, 0.03); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); transform: scale(1.02); }
+
+        .spatial-premium-btn { position: relative; overflow: hidden; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%); }
+        .spatial-premium-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(59, 130, 246, 1) 0%, rgba(139, 92, 246, 1) 100%); opacity: 0; transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1; }
+        .spatial-premium-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25); }
+        .spatial-premium-btn:hover::after { opacity: 1; }
+        .spatial-premium-btn > span { position: relative; z-index: 2; }
+        .minimal-alert-bar { border: 1px solid rgba(59, 130, 246, 0.15); background: rgba(59, 130, 246, 0.03); backdrop-filter: blur(10px); }
+
+        @keyframes liquid-stretch {
+            0%, 100% { border-radius: 65% 35% 62% 38% / 41% 59% 40% 59%; }
+            50% { border-radius: 40% 60% 38% 62% / 60% 40% 63% 37%; }
+        }
+        .liquid-canvas-container { animation: liquid-stretch 6s ease-in-out infinite alternate; will-change: transform, border-radius; }
+        @keyframes wink { 0%, 45%, 55%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.1); } }
+        .avatar-wink { animation: wink 4s ease-in-out infinite; transform-origin: center 46px; }
+        .glow-glasses { animation: pulse-neon 2.5s linear infinite alternate; }
+        @keyframes pulse-neon { 0% { filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.6)); } 100% { filter: drop-shadow(0 0 10px #CCFF00) drop-shadow(0 0 18px rgba(139, 92, 246, 0.9)); } }
+        .cyber-holo-glow { background: radial-gradient(circle at 50% 50%, rgba(204, 255, 0, 0.15) 0%, transparent 60%); filter: blur(40px); }
+
+        /* BUGS 1 & 4 FIXED: Holographic modal pointer management */
+        #neural-linkedin-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background: rgba(3, 3, 5, 0.85); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); opacity: 0; visibility: hidden; perspective: 1200px; pointer-events: none; }
+        #neural-linkedin-modal.modal-active { opacity: 1; visibility: visible; pointer-events: auto !important; }
+        .interactive-skill-pill { transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        .interactive-skill-pill:hover, .interactive-skill-pill:active { border-color: #CCFF00 !important; color: #ffffff !important; background: rgba(204, 255, 0, 0.05) !important; box-shadow: 0 0 20px rgba(204, 255, 0, 0.2); transform: scale(1.04) translateZ(0); }
+
+        /* BUG 1 FIXED: Restrict all pointer target captures strictly on the parent cards */
+        #card-rasool *, #card-chakra * { pointer-events: none !important; }
+        
+        /* Direct Acceleration Hooks on Studio Cards and Vector Targets */
+        #card-rasool, #card-chakra, #rasool-head-group, #chakra-head-group, #modal-rasool-head, #modal-chakra-head {
+            will-change: transform, border-color, box-shadow;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-display overflow-x-hidden">
+
+    <!-- Neural Co-Founder Biographical Card Modal (FIXED PERMANENT HEADER) -->
+    <div id="neural-linkedin-modal" aria-hidden="true" role="dialog" class="gpu-accel">
+        <div id="neural-window" class="w-full max-w-5xl h-[85vh] bg-[#0b0b0e]/95 border border-white/10 rounded-[32px] relative overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.9)] scale-95 opacity-0 flex flex-col will-change-transform">
+            
+            <!-- STICKY PERMANENT HEADER (Single line scaling & truncating) -->
+            <div class="flex items-center justify-between border-b border-white/5 pb-4 sm:pb-5 pt-5 sm:pt-10 px-4 sm:px-10 shrink-0 bg-[#0b0b0e]/95 z-20 gap-2">
+                <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-brand-neon flex items-center justify-center text-black font-black text-xs sm:text-sm font-sans shadow-[0_0_15px_#CCFF00] shrink-0">M</div>
+                    <div class="min-w-0 overflow-hidden flex flex-col justify-center">
+                        <div class="text-[8px] sm:text-[10px] font-mono text-brand-neon tracking-widest uppercase whitespace-nowrap truncate leading-tight">// STUDIO_CORE_ARCHIVE</div>
+                        <div class="text-[7.5px] sm:text-xs text-gray-400 font-sans whitespace-nowrap truncate leading-tight">Verified Human Developer File Connected</div>
+                    </div>
+                </div>
+                <!-- Button text changes to fit screen perfectly -->
+                <button onclick="closeNeuralInterface()" class="px-3 sm:px-4 py-1.5 sm:py-2 border border-white/10 rounded-full font-sans text-[8px] sm:text-[10px] font-bold text-gray-400 hover:text-brand-neon hover:border-brand-neon/40 active:border-brand-neon/60 transition-all uppercase tracking-widest bg-[#121216] shrink-0 whitespace-nowrap outline-none">
+                    ✕ CLOSE <span class="hidden sm:inline">PROFILE</span>
+                </button>
+            </div>
+
+            <!-- INDEPENDENT SCROLLING BODY -->
+            <div id="neural-profile-injection" class="flex-grow overflow-y-auto hide-scrollbar p-6 md:p-10"></div>
+        </div>
+    </div>
+
+    <!-- Live Preview Sandbox Portal Frame -->
+    <div id="preview-overlay" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-md flex flex-col opacity-0 pointer-events-none transition-all duration-300 gpu-accel" aria-hidden="true">
+        <div class="w-[92%] max-w-3xl mx-auto mt-4 mb-2 flex flex-col gap-2.5 z-50 flex-shrink-0">
+            <div class="flex items-center justify-between px-6 py-3 bg-black/90 border border-white/10 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-xl w-full">
+                <div class="flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" aria-hidden="true"></span>
+                    <span id="overlay-title" class="text-[9px] md:text-[10px] font-mono text-gray-300 uppercase tracking-widest truncate max-w-[120px] sm:max-w-xs">MARZOFT_PROTOTYPE</span>
+                </div>
+                <div class="flex gap-3 text-[8px] sm:text-[9px] font-mono font-bold tracking-wider flex-shrink-0 whitespace-nowrap">
+                    <button onclick="requestFullscreenPreview()" class="text-gray-400 hover:text-white transition uppercase whitespace-nowrap" aria-label="View Fullscreen">[ 🗖 FULL ]</button>
+                    <button onclick="closePreview()" class="text-red-400 hover:text-red-300 transition uppercase whitespace-nowrap" aria-label="Close Preview">[ ✕ CLOSE ]</button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 px-4 py-2 bg-black/80 border border-white/10 rounded-full overflow-x-auto hide-scrollbar scroll-smooth">
+                <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest mr-1 shrink-0">PORTALS:</span>
+                <button onclick="switchSandbox(0)" id="pill-0" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-brand-gold/50 text-gray-400 transition">[01_WEDDING]</button>
+                <button onclick="switchSandbox(1)" id="pill-1" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-brand-cyan/50 text-gray-400 transition">[02_BIRTHDAY]</button>
+                <button onclick="switchSandbox(2)" id="pill-2" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-green-500/50 text-gray-400 transition">[03_HEALTH]</button>
+                <button onclick="switchSandbox(3)" id="pill-3" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-brand-pro/50 text-gray-400 transition">[04_EVENT]</button>
+                <button onclick="switchSandbox(4)" id="pill-4" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-brand-start/50 text-gray-400 transition">[05_ESTATE]</button>
+                <button onclick="switchSandbox(5)" id="pill-5" class="sandbox-pill shrink-0 px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 hover:border-brand-elite/50 text-gray-400 transition">[06_SALON]</button>
+            </div>
+        </div>
+
+        <div id="preview-loader" class="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none bg-black transition-opacity duration-300">
+            <div class="relative w-12 h-12">
+                <div class="absolute inset-0 rounded-full border-2 border-white/10"></div>
+                <div class="absolute inset-0 rounded-full border-2 border-t-blue-500 border-r-transparent animate-spin"></div>
+            </div>
+            <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest mt-4">Streaming Sandbox Environment...</span>
+        </div>
+        
+        <div class="flex-grow h-0 w-full px-4 pb-4 z-10">
+            <div class="w-full h-full rounded-xl overflow-hidden border border-white/10 bg-black shadow-inner relative">
+                <iframe id="preview-iframe" class="w-full h-full opacity-0 transition-opacity duration-300 border-0" src="" allow="fullscreen" title="Live Project Preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header Overlay -->
+    <nav class="fixed w-full px-3 py-4 sm:px-4 md:p-8 flex justify-between items-center gap-3 sm:gap-6 z-50 mix-blend-difference text-white">
+        <h2 class="font-bold text-[7px] sm:text-xs tracking-[0.05em] sm:tracking-[0.3em] font-sans flex-shrink-0 select-none">
+            MARZOFT TECHNOLOGIES
+        </h2>
+        <div class="flex items-center gap-2 sm:gap-4 md:gap-6 text-[6.5px] sm:text-[9px] uppercase font-bold tracking-wider md:tracking-widest font-sans overflow-x-auto hide-scrollbar scroll-smooth pl-2">
+            <a href="#home" class="hover:text-brand-start transition-colors shrink-0">Intro</a>
+            <a href="#about" class="hover:text-brand-start transition-colors shrink-0">About Us</a>
+            <a href="#portfolio-ecosystem" class="hover:text-brand-start transition-colors shrink-0">Showcase</a>
+            <a href="#portfolio-luxury" class="hover:text-brand-start transition-colors shrink-0">Invitations</a>
+            <a href="#pricing" class="hover:text-brand-start transition-colors shrink-0">Investment</a>
+            <a href="#contact" class="hover:text-brand-start transition-colors shrink-0">Connect</a>
+        </div>
+    </nav>
+
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 1 - INTRO HERO                               -->
+<!-- ========================================================================= -->
+
+    <!-- Parallax Hero Layout -->
+    <header id="home" class="hero-section relative w-full h-screen overflow-hidden flex items-center justify-center">
+        <div class="hero-bg absolute inset-0 w-full h-full gpu-accel z-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" decoding="async" loading="eager" class="w-full h-full object-cover" alt="Abstract Dark Architecture">
+        </div>
+        <div class="hero-overlay absolute inset-0 bg-black/70 z-2" aria-hidden="true"></div>
+        <div class="hero-content relative z-10 text-center px-4">
+            <h1 class="title-responsive uppercase mb-4 text-white font-serif font-medium">Marzoft</h1>
+            <p class="font-sans font-light tracking-[0.2em] uppercase text-xs text-gray-300">Engineering Digital Luxury</p>
+        </div>
+    </header>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 1 - INTRO HERO                                 -->
+<!-- ========================================================================= -->
+
+
+
+    <!-- Page Body Stream Layer -->
+    <div class="content-layer grid-bg relative z-20 bg-brand-dark">
+        <main class="w-full">
+            
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 2 - ABOUT US                                 -->
+<!-- ========================================================================= -->
+
+            <!-- Architectural Genesis / Studio Section -->
+            <div id="about" class="w-full relative bg-brand-dark border-b border-white/5 py-24 md:py-36 overflow-hidden">
+                
+                <!-- Resized down and shortened, taking less space -->
+                <section class="max-w-6xl mx-auto px-6 mb-24 w-full flex flex-col md:flex-row items-center justify-between gap-12">
+                    <div id="studio-manifesto-block" class="max-w-4xl text-center md:text-left will-change-transform">
+                        <span class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-gray-500 block mb-3">// ARCHITECTURAL_GENESIS //</span>
+                        <h2 id="manifesto-text" class="text-3xl sm:text-4xl md:text-6xl font-sans font-black tracking-tighter text-white leading-[1.05] uppercase">
+                            Redefining digital standards. <br>
+                            Engineering <span class="font-serif italic text-brand-neon lowercase font-medium">high-velocity web frameworks.</span>
+                        </h2>
+                    </div>
+                    <button type="button" onclick="gsap.to(window, { scrollTo: {y: '#contact', autoKill: false}, duration: 1.5, ease: 'power3.inOut' });" class="flex-shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neon rounded-full" id="arrow-container" aria-label="Scroll to Book Now Console">
+                        <div class="w-20 h-20 md:w-32 md:h-32 rounded-full border border-white/10 flex items-center justify-center bg-[#0b0b0e] shadow-2xl transition-all hover:border-brand-neon/30 hover:scale-[1.03]">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4V20M12 20L5 13M12 20L19 13" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </button>
+                </section>
+
+                <section class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-10">
+                    
+                    <!-- BUGS 1 & 4 FIXED: Direct openNeuralInterface bindings for Instant Loading on Mobile + CSS hardware active state -->
+                    <div onclick="openNeuralInterface('rasool')" id="card-rasool" class="bg-[#0b0b0e] border border-white/5 rounded-[32px] p-8 flex flex-col items-center justify-between text-center group cursor-pointer transition-all duration-300 hover:border-brand-neon/30 active:border-brand-neon/50 active:scale-[0.98] hover:shadow-[0_30px_80px_rgba(204,255,0,0.05)] active:shadow-[0_0_30px_rgba(204,255,0,0.2)] relative overflow-hidden">
+                        <div class="absolute -right-16 -top-16 w-36 h-36 cyber-holo-glow opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
+                        <div class="w-full flex flex-col items-center space-y-6 overflow-hidden">
+                            <div class="w-32 h-32 bg-zinc-900 border border-white/5 flex items-center justify-center liquid-canvas-container shadow-2xl relative shrink-0">
+                                <svg class="w-24 h-24 text-black select-none pointer-events-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="rasool-avatar-vector" id="rasool-head-group">
+                                        <circle cx="50" cy="50" r="22" fill="#ffd1dc"/> 
+                                        <!-- Cap to Rasool and a smile -->
+                                        <path d="M28 28C34 22 66 22 72 28C76 34 66 18 50 16C34 16 24 34 28 28Z" fill="#091e3a"/> 
+                                        <circle class="avatar-wink" cx="42" cy="46" r="3" fill="#000"/> 
+                                        <circle class="avatar-wink" cx="58" cy="46" r="3" fill="#000"/> 
+                                        <!-- Smile path -->
+                                        <path d="M44 57C44 57 46 60 50 60C54 60 56 57 55 57" stroke="#000" stroke-width="2.5" stroke-linecap="round"/> 
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="w-full flex flex-col items-center">
+                                <span class="text-[9px] font-mono tracking-widest uppercase font-bold text-brand-neon bg-brand-neon/5 border border-brand-neon/10 px-3 py-1 rounded-md inline-block shrink-0">[ CORE_ARCHITECT ]</span>
+                                <!-- whitespace-nowrap and truncate to prevent double line wrapping on mobile -->
+                                <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3 whitespace-nowrap truncate w-full px-2">Mohammed Rasool R</h3>
+                                <p class="text-[10px] sm:text-xs text-gray-400 font-mono mt-1 whitespace-nowrap truncate w-full px-2">Chief Technology Officer // Co-Founder</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 font-sans text-xs font-bold text-brand-neon uppercase tracking-widest opacity-60 group-hover:opacity-100 group-active:opacity-100 group-hover:translate-y-[-2px] group-active:translate-y-[-2px] transition-all duration-300">
+                            [ View Full Profile ] →
+                        </div>
+                    </div>
+
+                    <div onclick="openNeuralInterface('chakravarthi')" id="card-chakra" class="bg-[#0b0b0e] border border-white/5 rounded-[32px] p-8 flex flex-col items-center justify-between text-center group cursor-pointer transition-all duration-300 hover:border-brand-neon/30 active:border-brand-neon/50 active:scale-[0.98] hover:shadow-[0_30px_80px_rgba(204,255,0,0.05)] active:shadow-[0_0_30px_rgba(204,255,0,0.2)] relative overflow-hidden">
+                        <div class="absolute -right-16 -top-16 w-36 h-36 cyber-holo-glow opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
+                        <div class="w-full flex flex-col items-center space-y-6 overflow-hidden">
+                            <div class="w-32 h-32 bg-zinc-900 border border-white/5 flex items-center justify-center liquid-canvas-container shadow-2xl relative shrink-0">
+                                <svg class="w-24 h-24 text-black select-none pointer-events-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="chakra-avatar-vector" id="chakra-head-group">
+                                        <circle cx="50" cy="50" r="22" fill="#ffdfba"/> 
+                                        <path d="M28 28C34 22 66 22 72 28C76 34 66 18 50 16C34 16 24 34 28 28Z" fill="#091e3a"/> 
+                                        <circle class="avatar-wink" cx="42" cy="46" r="2.5" fill="#000"/> 
+                                        <circle class="avatar-wink" cx="58" cy="46" r="2.5" fill="#000"/> 
+                                        <g class="glow-glasses stroke-[2.5]" stroke="#8B5CF6">
+                                            <circle cx="42" cy="46" r="6" />
+                                            <circle cx="58" cy="46" r="6" />
+                                            <line x1="48" y1="46" x2="52" y2="46" />
+                                        </g>
+                                        <path d="M44 57C44 57 46 60 50 60C54 60 56 57 55 57" stroke="#000" stroke-width="2.5" stroke-linecap="round"/> 
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="w-full flex flex-col items-center">
+                                <span class="text-[9px] font-mono tracking-widest uppercase font-bold text-brand-neon bg-brand-neon/5 border border-brand-neon/10 px-3 py-1 rounded-md inline-block shrink-0">[ UX_ENGINEER ]</span>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3 whitespace-nowrap truncate w-full px-2">Chakravarthi N</h3>
+                                <p class="text-[10px] sm:text-xs text-gray-400 font-mono mt-1 whitespace-nowrap truncate w-full px-2">Director of UX Engineering // Co-Founder</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 font-sans text-xs font-bold text-brand-neon uppercase tracking-widest opacity-60 group-hover:opacity-100 group-active:opacity-100 group-hover:translate-y-[-2px] group-active:translate-y-[-2px] transition-all duration-300">
+                            [ View Full Profile ] →
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 2 - ABOUT US                                   -->
+<!-- ========================================================================= -->
+
+
+
+            <!-- UNIFIED PORTFOLIO CONTAINMENT WRAPPER -->
+            <div id="portfolio" class="relative bg-brand-dark w-full">
+                
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 3 - SHOWCASE                                 -->
+<!-- ========================================================================= -->
+
+                <section id="portfolio-ecosystem" class="w-full min-h-screen relative bg-brand-dark border-t border-white/5 overflow-hidden flex flex-col items-center justify-center py-20">
+                    <div class="absolute inset-0 grid-bg opacity-15 click-through z-2" aria-hidden="true"></div>
+                    <div class="w-full max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center">
+                        <div class="text-center mb-10">
+                            <span class="text-brand-gold text-[10px] md:text-xs font-mono tracking-widest uppercase block mb-2">// ENTERPRISE ARCHITECTURE</span>
+                            <h2 class="text-3xl md:text-5xl font-orbitron font-black uppercase tracking-wider text-white">Ecosystem Frameworks</h2>
+                        </div>
+
+                        <!-- 3D Stacked Deck Canvas -->
+                        <div class="w-full max-w-md mx-auto relative h-[480px] flex items-center justify-center">
+                            <div class="showcase-deck click-through">
+                                
+                                <button type="button" class="showcase-slide-card gpu-accel p-6 md:p-8 flex flex-col justify-between text-left click-target" data-index="2" onclick="triggerCardPreview(2)" aria-label="View Marzoft Health & Wellness Prototype">
+                                    <div class="card-glare"></div>
+                                    <div class="w-full h-full flex flex-col justify-between relative z-10">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-4 font-mono">
+                                                <span class="text-[9px] md:text-[10px] text-[#10B981] tracking-widest uppercase">[ SYSTEM_UNIT: 01 ]</span>
+                                                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wider">GEOM: HELIX</span>
+                                            </div>
+                                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 font-mono leading-tight">Marzoft Health & Wellness</h3>
+                                            <p class="text-gray-400 text-xs font-sans uppercase tracking-wider">Clinical Ecosystem & Booking Engine</p>
+                                        </div>
+                                        <div class="my-4 flex-grow relative overflow-hidden rounded-xl border border-white/10">
+                                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Clinical Platform Preview" loading="lazy">
+                                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 text-center">
+                                                <span class="font-mono text-[10px] text-white uppercase tracking-widest bg-black/80 px-4 py-2 rounded shadow-xl border border-white/20 flex items-center gap-2">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Activate Sandbox
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-4">
+                                            <span class="font-mono text-[10px] text-[#10B981] tracking-widest">[ DEPLOY_SANDBOX_PORTAL ]</span>
+                                        </div>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="showcase-slide-card gpu-accel p-6 md:p-8 flex flex-col justify-between text-left click-target" data-index="3" onclick="triggerCardPreview(3)" aria-label="View Marzoft Event Planner Prototype">
+                                    <div class="card-glare"></div>
+                                    <div class="w-full h-full flex flex-col justify-between relative z-10">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-4 font-mono">
+                                                <span class="text-[9px] md:text-[10px] text-brand-pro tracking-widest uppercase">[ SYSTEM_UNIT: 02 ]</span>
+                                                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wider">GEOM: CUBE</span>
+                                            </div>
+                                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 font-mono leading-tight">Marzoft Event Planner</h3>
+                                            <p class="text-gray-400 text-xs font-sans uppercase tracking-wider">Bespoke Curation & Event Booking Portal</p>
+                                        </div>
+                                        <div class="my-4 flex-grow relative overflow-hidden rounded-xl border border-white/10">
+                                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Event Curation Preview" loading="lazy">
+                                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 text-center">
+                                                <span class="font-mono text-[10px] text-white uppercase tracking-widest bg-black/80 px-4 py-2 rounded shadow-xl border border-white/20 flex items-center gap-2">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Activate Sandbox
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-4">
+                                            <span class="font-mono text-[10px] text-brand-pro tracking-widest">[ DEPLOY_SANDBOX_PORTAL ]</span>
+                                        </div>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="showcase-slide-card gpu-accel p-6 md:p-8 flex flex-col justify-between text-left click-target" data-index="4" onclick="triggerCardPreview(4)" aria-label="View Marzoft Real Estate Prototype">
+                                    <div class="card-glare"></div>
+                                    <div class="w-full h-full flex flex-col justify-between relative z-10">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-4 font-mono">
+                                                <span class="text-[9px] md:text-[10px] text-brand-start tracking-widest uppercase">[ SYSTEM_UNIT: 03 ]</span>
+                                                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wider">GEOM: CHART</span>
+                                            </div>
+                                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 font-mono leading-tight">Marzoft Real Estate</h3>
+                                            <p class="text-gray-400 text-xs font-sans uppercase tracking-wider">High-Ticket Interactive Digital Showroom</p>
+                                        </div>
+                                        <div class="my-4 flex-grow relative overflow-hidden rounded-xl border border-white/10">
+                                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Real Estate Showroom Preview" loading="lazy">
+                                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 text-center">
+                                                <span class="font-mono text-[10px] text-white uppercase tracking-widest bg-black/80 px-4 py-2 rounded shadow-xl border border-white/20 flex items-center gap-2">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Activate Sandbox
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-4">
+                                            <span class="font-mono text-[10px] text-brand-start tracking-widest">[ DEPLOY_SANDBOX_PORTAL ]</span>
+                                        </div>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="showcase-slide-card gpu-accel p-6 md:p-8 flex flex-col justify-between text-left click-target" data-index="5" onclick="triggerCardPreview(5)" aria-label="View Marzoft Salon & Bridal Prototype">
+                                    <div class="card-glare"></div>
+                                    <div class="w-full h-full flex flex-col justify-between relative z-10">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-4 font-mono">
+                                                <span class="text-[9px] md:text-[10px] text-brand-elite tracking-widest uppercase">[ SYSTEM_UNIT: 04 ]</span>
+                                                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wider">GEOM: SPHERE</span>
+                                            </div>
+                                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 font-mono leading-tight">Marzoft Salon & Bridal</h3>
+                                            <p class="text-gray-400 text-xs font-sans uppercase tracking-wider">Premium Luxury Salon Booking System</p>
+                                        </div>
+                                        <div class="my-4 flex-grow relative overflow-hidden rounded-xl border border-white/10">
+                                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Salon Scheduler Preview" loading="lazy">
+                                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 text-center">
+                                                <span class="font-mono text-[10px] text-white uppercase tracking-widest bg-black/80 px-4 py-2 rounded shadow-xl border border-white/20 flex items-center gap-2">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-red-50"></span> Activate Sandbox
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-4">
+                                            <span class="font-mono text-[10px] text-brand-elite tracking-widest">[ DEPLOY_SANDBOX_PORTAL ]</span>
+                                        </div>
+                                    </div>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-[10px] font-mono text-gray-500 tracking-widest uppercase flex items-center gap-3">
+                            <span>[ ECOSYSTEM_TIMELINE ]</span>
+                            <span id="showcase-progression" class="text-[#10B981] font-bold transition-colors duration-700">1 / 4</span>
+                        </div>
+                    </div>
+                </section>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 3 - SHOWCASE                                   -->
+<!-- ========================================================================= -->
+
+
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 4 - INVITATIONS                              -->
+<!-- ========================================================================= -->
+
+                <section id="portfolio-luxury" class="w-full relative bg-[#050505] border-t border-white/5 py-12 md:py-16 flex flex-col justify-center">
+                    <div class="absolute inset-0 grid-bg opacity-10 click-through z-1" aria-hidden="true"></div>
+                    <div class="w-full max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
+                        
+                        <div class="text-center mb-10">
+                            <span class="text-brand-gold text-[10px] md:text-xs font-mono tracking-widest uppercase block mb-1.5">// SPATIAL BRAND ASSETS</span>
+                            <h2 class="text-2xl md:text-4xl font-orbitron font-black uppercase tracking-wider text-white">Luxury Micro-Experiences</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full items-stretch">
+                            
+                            <button type="button" class="luxury-experience-card wedding-suite-mockup shimmer-sweep p-5 md:p-6 flex flex-col justify-between gpu-accel" onclick="triggerCardPreview(0)" aria-label="Open Marzoft Royal Wedding Sandbox">
+                                <div class="card-glare"></div>
+                                <div class="flex flex-col h-full justify-between">
+                                    <div class="mb-1">
+                                        <div class="flex justify-between items-center w-full mb-1 font-mono">
+                                            <span class="text-brand-gold text-[8px] md:text-[9px] uppercase tracking-widest">[ EVENT_LUXURY: SECURE ]</span>
+                                            <span class="text-gray-500 text-[8px]">[ V_ALPHA ]</span>
+                                        </div>
+                                        <h3 class="text-xl md:text-2xl font-serif italic text-white mb-0.5 tracking-wide">Royal Wedding Suite</h3>
+                                        <p class="text-gray-400 text-[9px] font-sans uppercase tracking-widest mb-1">Interactive High-Ticket Invitation Concept</p>
+                                        <p class="text-gray-400 text-xs font-sans leading-relaxed">
+                                            Designed for performance, featuring delicate gold aesthetics, fluid motion coordinates, and automated event countdowns.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="w-full py-2 flex justify-center bg-black/30 rounded-xl border border-white/5 my-2">
+                                        <div class="mockup-frame wedding-frame-bg flex items-center justify-center">
+                                            <div class="wedding-halo"></div>
+                                            <div class="wedding-emblem-box">
+                                                <div class="wedding-emblem"></div>
+                                                <div class="wedding-text">Save the<br>Date</div>
+                                                <div class="wedding-ticker font-mono">
+                                                    <span>12</span><span class="colon">:</span><span>00</span><span class="colon">:</span><span>00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full flex justify-center mt-1">
+                                        <span class="font-mono text-[8px] text-brand-gold uppercase tracking-widest flex items-center gap-1.5 bg-[#120f0a]/80 px-3 py-1.5 rounded-full border border-brand-gold/30 shadow-md">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Deploy Invitation Sandbox
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="luxury-experience-card birthday-suite-mockup shimmer-sweep p-5 md:p-6 flex flex-col justify-between gpu-accel" onclick="triggerCardPreview(1)" aria-label="Open Marzoft Celestial Birthday Sandbox">
+                                <div class="card-glare"></div>
+                                <div class="flex flex-col h-full justify-between">
+                                    <div class="mb-1">
+                                        <div class="flex justify-between items-center w-full mb-1 font-mono">
+                                            <span class="text-brand-cyan text-[8px] md:text-[9px] uppercase tracking-widest">[ CELEBRATION: PORTAL ]</span>
+                                            <span class="text-gray-500 text-[8px]">[ V_OMEGA ]</span>
+                                        </div>
+                                        <h3 class="text-xl md:text-2xl font-serif italic text-white mb-0.5 tracking-wide">Celestial Birthday</h3>
+                                        <p class="text-gray-400 text-[9px] font-sans uppercase tracking-widest mb-1">Digital Spatial Experience & Registry</p>
+                                        <p class="text-gray-400 text-xs font-sans leading-relaxed">
+                                            Engineered with high-frequency particle elements and glowing motion frames to deliver rich emotional interaction vectors.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="w-full py-2 flex justify-center bg-black/30 rounded-xl border border-white/5 my-2">
+                                        <div class="mockup-frame birthday-frame-bg flex items-center justify-center">
+                                            <div class="birthday-gradient-loop"></div>
+                                            <div class="b-circle b1"></div>
+                                            <div class="b-circle b2"></div>
+                                            <div class="b-circle b3"></div>
+                                            <div class="birthday-panel">
+                                                <span>CELEBRATION<br>STREAM</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full flex justify-center mt-1">
+                                        <span class="font-mono text-[8px] text-brand-cyan uppercase tracking-widest flex items-center gap-1.5 bg-[#090214]/80 px-3 py-1.5 rounded-full border border-brand-cyan/30 shadow-md">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Deploy Celebration Sandbox
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 4 - INVITATIONS                                 -->
+<!-- ========================================================================= -->
+
+
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 5 - INVESTMENT                               -->
+<!-- ========================================================================= -->
+
+            <!-- INVESTMENT DECK PANEL -->
+            <section id="pricing" class="pricing-section">
+                <div class="w-full max-w-6xl px-4 flex flex-col items-center">
+                    
+                    <div class="text-center mb-10 z-10 relative">
+                        <span class="font-mono text-xs tracking-widest text-brand-start mb-1 uppercase block">// SPATIAL_DECK_ACTIVE //</span>
+                        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-wider font-orbitron">Investment Tiers</h2>
+                    </div>
+
+                    <div class="pricing-deck-container w-full max-w-6xl">
+                        <div class="pricing-deck" id="pricingDeck">
+                            
+                            <div class="pricing-card group gpu-accel" id="cardA" data-tier-name="Start" tabindex="0" role="button" aria-label="Select Marzoft Start Tier" style="opacity: 0;">
+                                <div class="glow-field bg-brand-start"></div>
+                                <div class="flex flex-col">
+                                    <span class="font-mono text-[10px] text-brand-start uppercase tracking-widest block mb-1">[ CODE_ENGINE: BASE ]</span>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-1 tracking-wide font-orbitron">MARZOFT START</h3>
+                                    <div class="text-gray-400 text-[10px] uppercase tracking-widest font-mono mb-4">3-5 Day Production Window</div>
+                                    <div class="text-3xl font-extrabold text-white tracking-tight font-orbitron my-4">ESSENTIAL</div>
+                                    <p class="text-gray-300 text-xs md:text-sm font-sans leading-relaxed mb-6 min-h-[64px]">
+                                        Full single-page interactive architecture, WhatsApp business API integrations.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-gray-400 font-sans border-t border-white/10 pt-4">
+                                        <li class="flex items-center gap-2"><span class="text-brand-start font-mono" aria-hidden="true">✔</span> Interactive CSS Frameworks</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-start font-mono" aria-hidden="true">✔</span> WhatsApp API Handshake Routing</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-start font-mono" aria-hidden="true">✔</span> Free custom domain (1 year)</li>
+                                    </ul>
+                                </div>
+                                <button type="button" onclick="selectTier('Start'); event.stopPropagation();" class="pricing-btn border border-brand-start/30 text-brand-start hover:bg-brand-start hover:text-black focus-visible:bg-brand-start focus-visible:text-black outline-none mt-4 py-2 rounded">
+                                    [ ENGAGE_START ]
+                                </button>
+                            </div>
+
+                            <div class="pricing-card group gpu-accel" id="cardB" data-tier-name="Pro" tabindex="0" role="button" aria-label="Select Marzoft Pro Tier">
+                                <div class="popular-badge bg-brand-neon text-black text-[9px] font-mono px-3 py-1 absolute -top-3 left-6 rounded font-bold shadow-[0_4px_12px_rgba(204,255,0,0.3)]">// POPULAR_CHOICE</div>
+                                <div class="glow-field bg-brand-neon"></div>
+                                <div class="flex flex-col">
+                                    <span class="font-mono text-[10px] text-brand-neon uppercase tracking-widest block mb-1">[ CODE_ENGINE: OPTIMIZED ]</span>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-1 tracking-wide font-orbitron">MARZOFT PRO</h3>
+                                    <div class="text-[10px] text-brand-neon/80 uppercase tracking-widest font-mono mb-4">7-10 Day Production Window</div>
+                                    <div class="text-3xl font-extrabold text-brand-neon tracking-tight font-orbitron my-4">ADVANCED</div>
+                                    <p class="text-gray-300 text-xs md:text-sm font-sans leading-relaxed mb-6 min-h-[64px]">
+                                        High-end 3D visual layouts, sub-second global CDN deployment setup, complete performance engine.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-gray-400 font-sans border-t border-white/10 pt-4">
+                                        <li class="flex items-center gap-2"><span class="text-brand-neon font-mono" aria-hidden="true">✔</span> Spatial Motion Integration</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-neon font-mono" aria-hidden="true">✔</span> Global Edge Network Deployment</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-neon font-mono" aria-hidden="true">✔</span> Free custom domain (1 year)</li>
+                                    </ul>
+                                </div>
+                                <button type="button" onclick="selectTier('Pro'); event.stopPropagation();" class="pricing-btn border border-brand-neon/30 text-brand-neon hover:bg-brand-neon hover:text-black focus-visible:bg-brand-neon focus-visible:text-black outline-none mt-4 py-2 rounded">
+                                    [ ENGAGE_PRO_OFFER ]
+                                </button>
+                            </div>
+
+                            <div class="pricing-card group gpu-accel" id="cardC" data-tier-name="Elite" tabindex="0" role="button" aria-label="Select Marzoft Elite Tier" style="opacity: 0;">
+                                <div class="glow-field bg-brand-gold"></div>
+                                <div class="flex flex-col">
+                                    <span class="font-mono text-[10px] text-brand-gold uppercase tracking-widest block mb-1">[ CODE_ENGINE: CUSTOM ]</span>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-1 tracking-wide font-orbitron">MARZOFT ELITE</h3>
+                                    <div class="text-gray-400 text-[10px] uppercase tracking-widest font-mono mb-4">Custom Scoped Timeline</div>
+                                    <div class="text-3xl font-extrabold text-brand-gold tracking-tight font-orbitron my-4">ENTERPRISE</div>
+                                    <p class="text-gray-300 text-xs md:text-sm font-sans leading-relaxed mb-6 min-h-[64px]">
+                                        Bespoke custom Three.js/WebGL canvas experiences, full backend portals, elite startup transformations.
+                                    </p>
+                                    <ul class="space-y-2 text-xs text-gray-400 font-sans border-t border-white/10 pt-4">
+                                        <li class="flex items-center gap-2"><span class="text-brand-gold font-mono" aria-hidden="true">✔</span> WebGL Shader Pipeline Setup</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-gold font-mono" aria-hidden="true">✔</span> Dedicated Database Integration</li>
+                                        <li class="flex items-center gap-2"><span class="text-brand-gold font-mono" aria-hidden="true">✔</span> Free custom domain (1 year)</li>
+                                    </ul>
+                                </div>
+                                <button type="button" onclick="selectTier('Elite'); event.stopPropagation();" class="pricing-btn border border-brand-gold/30 text-brand-gold hover:bg-brand-gold hover:text-black focus-visible:bg-brand-gold focus-visible:text-black outline-none mt-4 py-2 rounded">
+                                    [ INITIATE_CUSTOM ]
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SPECIALIZED CELEBRATIONS PANEL -->
+            <section id="celebration-suites" class="w-full relative bg-[#050505] border-t border-white/5 py-20 flex justify-center items-center z-10">
+                <div class="absolute inset-0 grid-bg opacity-10 click-through z-1" aria-hidden="true"></div>
+                <div class="w-full max-w-4xl px-6 relative z-10">
+                    <div class="premium-box p-8 md:p-12 border border-brand-cyan/20 rounded-2xl relative overflow-hidden gpu-accel">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-brand-sapphire/10 pointer-events-none z-0"></div>
+                        
+                        <div class="relative z-10 flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
+                            <div class="w-full md:w-1/2 flex flex-col">
+                                <span class="font-mono text-[10px] text-brand-cyan uppercase tracking-widest block mb-2">[ MICRO_EXPERIENCES ]</span>
+                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-wide font-orbitron uppercase">Celebration Suites</h3>
+                                
+                                <div class="flex p-1 bg-black/60 border border-white/10 rounded-lg mb-6 w-full max-w-sm">
+                                    <button type="button" id="tab-wedding" onclick="switchCelebrationTab('wedding')" class="flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-gold/20 text-brand-gold border border-brand-gold/30 transition-all whitespace-nowrap">Royal Wedding</button>
+                                    <button type="button" id="tab-birthday" onclick="switchCelebrationTab('birthday')" class="flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap">Celestial Birthday</button>
+                                </div>
+                                
+                                <div class="text-2xl font-extrabold text-brand-gold tracking-tight font-orbitron mb-2 transition-colors duration-300" id="cel-title">ROYAL WEDDING</div>
+                                <p class="text-gray-300 text-xs md:text-sm font-sans leading-relaxed min-h-[60px] transition-all duration-300" id="cel-desc">
+                                    Interactive High-Ticket Invitation Concept featuring delicate gold aesthetics, fluid motion coordinates, and automated event countdowns.
+                                </p>
+                            </div>
+                            
+                            <div class="w-full md:w-1/2 flex flex-col justify-center h-full md:border-l border-white/10 pt-6 md:pt-0 md:pl-8 lg:pl-12">
+                                <ul class="space-y-4 text-xs md:text-sm text-gray-400 font-sans mb-8">
+                                    <li class="flex items-center gap-3"><span class="text-brand-cyan font-mono text-sm">✔</span> Responsive Micro-Experiences</li>
+                                    <li class="flex items-center gap-3"><span class="text-brand-cyan font-mono text-sm">✔</span> Rich Particle Backdrops</li>
+                                    <li class="flex items-center gap-3"><span class="text-brand-cyan font-mono text-sm">✔</span> Custom Live Countdown Animations</li>
+                                    <li class="flex items-center gap-3"><span class="text-brand-cyan font-mono text-sm">✔</span> WhatsApp RSVP Integration</li>
+                                </ul>
+                                
+                                <button type="button" onclick="selectCelebrationSuite(); event.stopPropagation();" class="w-full relative overflow-hidden transition-all duration-300 border border-brand-cyan/40 text-white bg-brand-cyan/10 hover:bg-brand-cyan hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] focus-visible:bg-brand-cyan focus-visible:text-black outline-none py-3.5 rounded-lg tracking-widest font-mono text-[10px] uppercase font-bold group whitespace-nowrap">
+                                    <span class="relative z-10">[ ENGAGE CELEBRATION SUITE ]</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 5 - INVESTMENT                                 -->
+<!-- ========================================================================= -->
+
+
+
+
+<!-- ========================================================================= -->
+<!-- ⚡ START OF SECTION: SECTION 6 - CONNECT                                  -->
+<!-- ========================================================================= -->
+
+            <!-- SECURE CLIENT INTAKE CONSOLE -->
+            <section id="contact" class="spatial-obsidian min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-24">
+                <div class="spatial-glow-orb-1"></div>
+                <div class="spatial-glow-orb-2"></div>
+                
+                <div class="max-w-3xl w-full relative z-10">
+                    
+                    <div class="spatial-glass-card p-5 sm:p-8 md:p-12 rounded-3xl relative border shadow-2xl gpu-accel">
+                        
+                        <div class="flex justify-between items-center border-b border-white/5 pb-4 sm:pb-6 mb-8 sm:mb-10 font-sans w-full gap-1 sm:gap-4">
+                            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500 animate-pulse shrink-0" aria-hidden="true"></span>
+                                <span class="font-semibold uppercase text-[8px] sm:text-[10px] tracking-normal sm:tracking-widest text-blue-400 whitespace-nowrap">Collaboration Space</span>
+                            </div>
+                            <span id="console-status" class="uppercase text-[7.5px] sm:text-[9px] font-bold tracking-normal sm:tracking-widest text-gray-400 text-right whitespace-nowrap shrink-0">Step 1 of 2: Let's start with who you are</span>
+                        </div>
+
+                        <div id="handshake-panel" class="hidden minimal-alert-bar p-5 mb-8 rounded-2xl flex items-center gap-4 transition-all duration-300" aria-live="polite" role="status">
+                            <div id="loader-spinner" class="w-4.5 h-4.5 rounded-full border-2 border-t-transparent border-blue-500 animate-spin shrink-0"></div>
+                            <div class="flex flex-col">
+                                <span id="handshake-message" class="text-xs text-blue-300 font-medium tracking-wide">Validating details, syncing secure server session...</span>
+                            </div>
+                        </div>
+
+                        <form id="console-modules" onsubmit="event.preventDefault();" class="relative">
+                            
+                            <!-- STAGE 01: Client Identity -->
+                            <fieldset id="module-identity" class="space-y-8 transition-none">
+                                <div class="mb-8">
+                                    <h2 class="text-2xl md:text-3xl font-bold font-sans tracking-tight text-white mb-2">Let's build something extraordinary.</h2>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Tell us about yourself so we can establish a direct, personal channel.</p>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="relative">
+                                        <label for="client-name" class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-2.5">Full Name</label>
+                                        <input id="client-name" type="text" placeholder="e.g. Sarah Jenkins" class="spatial-input p-4 w-full text-sm tracking-wide text-white rounded-xl">
+                                    </div>
+                                    <div class="relative">
+                                        <label for="client-phone" class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-2.5">Contact Number</label>
+                                        <input id="client-phone" type="tel" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="e.g. +91 98450 12345" class="spatial-input p-4 w-full text-sm tracking-wide text-white rounded-xl">
+                                    </div>
+                                </div>
+                                
+                                <div class="relative">
+                                    <label for="client-email" class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-2.5">Email Address</label>
+                                    <input id="client-email" type="email" placeholder="e.g. sarah@brand.com" class="spatial-input p-4 w-full text-sm tracking-wide text-white rounded-xl">
+                                </div>
+
+                                <button id="proceed-btn" type="button" onclick="nextModule()" class="spatial-premium-btn w-full py-4.5 px-6 text-white font-semibold font-sans text-sm tracking-wider transition-all rounded-xl shadow-lg shadow-indigo-500/10">
+                                    <span>Continue to Project Scope →</span>
+                                </button>
+                            </fieldset>
+
+                            <!-- STAGE 02: Project Scope Configuration -->
+                            <fieldset id="module-scope" class="hidden space-y-8 opacity-0 pointer-events-none transition-none">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div>
+                                        <h2 class="text-2xl md:text-3xl font-bold font-sans tracking-tight text-white mb-2">Scope the Vision.</h2>
+                                        <p class="text-sm text-gray-400">Configure parameters, select delivery tiers, and express design goals.</p>
+                                    </div>
+                                    <div id="lock-state" class="text-[9px] text-red-400 bg-red-950/20 border border-red-500/10 px-3 py-1.5 rounded-full font-bold uppercase tracking-widest shrink-0">
+                                        Awaiting verification
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-6">
+                                    <div>
+                                        <span class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-3">
+                                            Select System Core Tier
+                                        </span>
+                                        <div class="grid grid-cols-3 gap-4 mb-5" role="radiogroup" aria-labelledby="tier-label">
+                                            <label id="label-start" class="minimal-tier-card p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center">
+                                                <input type="radio" id="tier-start" name="tier-choice" value="start" onchange="updateEstimate()" class="sr-only">
+                                                <span class="text-xs text-brand-start font-bold tracking-wider block mb-1">START</span>
+                                                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold font-sans">ESSENTIAL</span>
+                                            </label>
+                                            <label id="label-pro" class="minimal-tier-card p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center">
+                                                <input type="radio" id="tier-pro" name="tier-choice" value="pro" onchange="updateEstimate()" checked class="sr-only">
+                                                <span class="text-xs text-brand-neon font-bold tracking-wider block mb-1">PRO</span>
+                                                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold font-sans">ADVANCED</span>
+                                            </label>
+                                            <label id="label-elite" class="minimal-tier-card p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center">
+                                                <input type="radio" id="tier-elite" name="tier-choice" value="elite" onchange="updateEstimate()" class="sr-only">
+                                                <span class="text-xs text-brand-gold font-bold tracking-wider block mb-1">ELITE</span>
+                                                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold font-sans">ENTERPRISE</span>
+                                            </label>
+                                        </div>
+
+                                        <span class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-3 border-t border-white/5 pt-5">
+                                            Or Select Specialized Suite
+                                        </span>
+                                        <div class="grid grid-cols-2 gap-4" role="radiogroup" aria-labelledby="suite-label">
+                                            <label id="label-wedding" class="minimal-tier-card p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center">
+                                                <input type="radio" id="tier-wedding" name="tier-choice" value="wedding" onchange="updateEstimate()" class="sr-only">
+                                                <span class="text-xs text-brand-gold font-bold tracking-wider block mb-1">WEDDING</span>
+                                                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold font-sans">ROYAL SUITE</span>
+                                            </label>
+                                            <label id="label-birthday" class="minimal-tier-card p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center">
+                                                <input type="radio" id="tier-birthday" name="tier-choice" value="birthday" onchange="updateEstimate()" class="sr-only">
+                                                <span class="text-xs text-brand-cyan font-bold tracking-wider block mb-1">BIRTHDAY</span>
+                                                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold font-sans">CELESTIAL</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label for="client-deadline" class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-2.5">Target Timeline</label>
+                                        <input id="client-deadline" type="text" placeholder="e.g. 10 Business Days" class="spatial-input p-4 w-full text-sm text-white rounded-xl">
+                                    </div>
+
+                                    <div>
+                                        <label for="client-specs" class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold block mb-2.5">Tell us about your project and design goals</label>
+                                        <textarea id="client-specs" rows="3" placeholder="Explain what type of premium web design your brand needs" class="spatial-input p-4 w-full text-sm leading-relaxed text-white rounded-xl resize-none font-sans"></textarea>
+                                    </div>
+
+                                    <div class="p-5 border border-white/5 bg-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 rounded-xl">
+                                        <span class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold font-sans">Estimated System Value Status</span>
+                                        <span id="live-estimate" class="text-base font-bold text-brand-neon estimate-glow-pro tracking-widest font-sans transition-colors duration-300 shrink-0">PRO TIER SELECTED</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 mt-8">
+                                    <button type="button" onclick="prevModule()" class="p-4 px-6 border border-white/10 hover:border-white/30 text-gray-300 text-xs font-semibold uppercase tracking-wider rounded-xl transition-colors">Back</button>
+                                    <button id="submit-btn" onclick="executeIntake()" type="button" class="spatial-premium-btn flex-1 py-4 px-3 sm:px-6 text-white font-semibold font-sans text-[11px] sm:text-xs md:text-sm uppercase tracking-wider transition-all rounded-xl shadow-lg whitespace-nowrap">
+                                        <span>Submit Project Brief</span>
+                                    </button>
+                                </div>
+                            </fieldset>
+
+                        </form>
+
+                        <div class="mt-8 border-t border-white/5 pt-6 text-[10px] text-gray-500 font-sans tracking-wide">
+                            Secure connection enabled. Your specifications will be securely routed directly to our design workspace.
+                        </div>
+                    </div>
+
+                    <div class="mt-12 border-t border-white/5 pt-8 text-[11px] text-gray-400 tracking-wide w-full leading-relaxed">
+                        <p class="text-white font-semibold mb-2 uppercase tracking-widest text-xs">MARZOFT TECHNOLOGIES QUALITY ASSURANCE:</p>
+                        <p class="mb-3">Every project is built and optimized directly on our "Precision Code" framework, guaranteeing elite speeds and sub-second load times.</p>
+                        <p class="text-indigo-400 font-bold">Absolute clarity. Transparent timelines. Salem to the global stage.</p>
+                    </div>
+
+                </div>
+            </section>
+
+<!-- ========================================================================= -->
+<!-- 🛑 END OF SECTION: SECTION 6 - CONNECT                                    -->
+<!-- ========================================================================= -->
+
+
+        </main>
+    </div>
+
+    <!-- Script Orchestration Core -->
+    <script>
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: SETUP & INTRO                            //
+// ========================================================================= //
+
+        const isMobileDevice = window.innerWidth < 768;
+        const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                gsap.to(window, { scrollTo: {y: targetId, autoKill: false}, duration: 1, ease: "power3.inOut" });
+            });
+        });
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: SETUP & INTRO                             //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: SHOWCASE                                 //
+// ========================================================================= //
+
+        const marzoftShowcase = [
+            { title: "Marzoft Royal Wedding", url: "https://mdrinsight.github.io/Wedding-Invitation-Demo/" }, 
+            { title: "Marzoft Celestial Birthday", url: "https://mdrinsight.github.io/Birthday-Wishes-Demo/" }, 
+            { title: "Marzoft Health & Wellness", url: "https://mdrinsight.github.io/Marzoft-Health-Wellness-Demo/" }, 
+            { title: "Marzoft Event Planner", url: "https://mdrinsight.github.io/Marzoft-Event-Planners-Demo/" }, 
+            { title: "Marzoft Real Estate", url: "https://mdrinsight.github.io/Marzoft-Real-Estate-Demo/" }, 
+            { title: "Marzoft Salon & Bridal", url: "https://mdrinsight.github.io/Marzoft-Salon-Demo/" } 
+        ];
+
+        let activeShowcaseIndex = 2; 
+
+        let targetScrollOffset = 0;
+        let currentScrollOffset = 0;
+
+        function renderShowcaseLoop() {
+            const lerpFactor = isMobileDevice ? 0.07 : 0.12; 
+            if (Math.abs(targetScrollOffset - currentScrollOffset) < 0.0001) { currentScrollOffset = targetScrollOffset; } else { currentScrollOffset += (targetScrollOffset - currentScrollOffset) * lerpFactor; }
+            updateDeckStackProgress(currentScrollOffset);
+            let targetIndex = Math.min(Math.round(currentScrollOffset), 3) + 2;
+            if (targetIndex !== activeShowcaseIndex) updateActiveShowcase(targetIndex);
+            requestAnimationFrame(renderShowcaseLoop);
+        }
+
+        function updateActiveShowcase(index) {
+            activeShowcaseIndex = index;
+            const colorMappingIdx = Math.max(0, index - 2); 
+            const progressionEl = document.getElementById('showcase-progression');
+            if (progressionEl) {
+                progressionEl.innerText = `${colorMappingIdx + 1} / 4`;
+                const progressionColors = ["#10B981", "#8B5CF6", "#3B82F6", "#E63946"];
+                progressionEl.style.color = progressionColors[colorMappingIdx];
+            }
+
+            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
+            cards.forEach((card) => {
+                const cardIdx = parseInt(card.getAttribute('data-index'));
+                if (cardIdx === index) { card.classList.add('active-focus'); card.classList.add('click-target'); } else { card.classList.remove('active-focus'); card.classList.remove('click-target'); }
+            });
+        }
+
+        function updateDeckStackProgress(scrollOffset) {
+            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
+            const isMobile = window.innerWidth < 768;
+            const xMax = isMobile ? 35 : 140; const zMax = isMobile ? -100 : -150; const ryMax = isMobile ? -10 : -15; 
+
+            cards.forEach((card, domLoopIdx) => {
+                const relPos = domLoopIdx - scrollOffset; const absPos = Math.abs(relPos); const sign = Math.sign(relPos);
+                let xTranslate = 0; let zTranslate = 0; let rotateY = 0; let finalOpacity = 1; let zIndexVal = 50 - Math.round(absPos * 10); let isCardVisible = true;
+
+                if (isMobile) {
+                    if (absPos > 1.1) { finalOpacity = 0; isCardVisible = false; } else {
+                        xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = Math.max(0, 1 - (absPos * 0.95));
+                        if (finalOpacity < 0.02) { finalOpacity = 0; isCardVisible = false; }
+                    }
+                } else {
+                    if (absPos <= 1) { xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = 1 - (absPos * 0.4); } else {
+                        const excess = absPos - 1; xTranslate = sign * (xMax + (excess * 80)); zTranslate = zMax - (excess * 250); rotateY = sign * ryMax; finalOpacity = Math.max(0, 0.6 - (excess * 1.5));
+                    }
+                    if (finalOpacity < 0.01) { isCardVisible = false; }
+                }
+
+                if (isCardVisible) { card.style.display = 'flex'; card.style.transform = `translate3d(${xTranslate}px, 0px, ${zTranslate}px) rotateY(${rotateY}deg)`; card.style.opacity = finalOpacity; card.style.zIndex = zIndexVal; } else { card.style.display = 'none'; }
+            });
+        }
+
+        function triggerCardPreview(index) {
+            const data = marzoftShowcase[index]; if (!data) return;
+            document.body.style.overflow = 'hidden';
+            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
+            if (title) title.innerText = data.title;
+            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
+            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
+            gsap.killTweensOf(overlay); gsap.set(overlay, { transformOrigin: "center center", scale: 0.95, opacity: 0 }); gsap.to(overlay, { scale: 1, opacity: 1, pointerEvents: 'auto', duration: 0.5, ease: 'power3.out' });
+            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
+            const activePill = document.getElementById('pill-' + index);
+            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
+        }
+
+        function switchSandbox(index) {
+            const data = marzoftShowcase[index]; if (!data) return;
+            const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
+            if (title) title.innerText = data.title;
+            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
+            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
+            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
+            const activePill = document.getElementById('pill-' + index);
+            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
+        }
+
+        function closePreview() {
+            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe');
+            document.body.style.overflow = '';
+            gsap.to(overlay, { opacity: 0, pointerEvents: 'none', duration: 0.3, ease: 'power3.in', onComplete: () => { if (iframe) iframe.src = ''; } });
+        }
+
+        function requestFullscreenPreview() {
+            const iframe = document.getElementById('preview-iframe'); if (!iframe) return;
+            const target = iframe.parentElement;
+            if (target.requestFullscreen) { target.requestFullscreen(); } else if (target.mozRequestFullScreen) { target.mozRequestFullScreen(); } else if (target.webkitRequestFullscreen) { target.webkitRequestFullscreen(); } else if (target.msRequestFullscreen) { target.msRequestFullscreen(); }
+        }
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: SHOWCASE                                  //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: ABOUT US                                 //
+// ========================================================================= //
+
+        // Neural Profiles Mapping (ISSUES 1 & 2 FIXED - Single line text, truncated for mobile safety)
+        const neuralProfiles = {
+            rasool: {
+                html: `
+                <div class="space-y-6 md:space-y-8 font-sans text-left text-white tracking-wide">
+                    <div id="modal-header-container" class="relative bg-gradient-to-r from-indigo-950 to-neutral-900 rounded-2xl p-6 border border-white/10 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="w-24 h-24 rounded-full bg-indigo-500/20 flex items-center justify-center border-2 border-brand-neon relative overflow-hidden shrink-0 shadow-[0_0_25px_rgba(204,255,0,0.35)]">
+                            <svg class="w-18 h-18 text-black" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="modal-rasool-head">
+                                    <circle cx="50" cy="50" r="22" fill="#ffd1dc"/> 
+                                    <path d="M28 28C34 22 66 22 72 28C76 34 66 18 50 16C34 16 24 34 28 28Z" fill="#091e3a"/> 
+                                    <circle class="avatar-wink" cx="42" cy="46" r="3" fill="#000"/> 
+                                    <circle class="avatar-wink" cx="58" cy="46" r="3" fill="#000"/> 
+                                    <path d="M44 57C44 57 46 60 50 60C54 60 56 57 55 57" stroke="#000" stroke-width="2.5" stroke-linecap="round"/> 
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="space-y-1.5 text-center md:text-left flex-grow min-w-0 w-full overflow-hidden">
+                            <h4 class="text-[20px] sm:text-2xl md:text-3xl font-black tracking-tight whitespace-nowrap truncate w-full">MOHAMMED RASOOL R</h4>
+                            <p class="text-[9px] sm:text-xs font-mono text-brand-neon uppercase tracking-widest font-bold whitespace-nowrap truncate w-full">AI-Augmented Full-Stack Developer</p>
+                            <p class="text-[9px] sm:text-[11px] text-gray-400 font-mono whitespace-nowrap truncate w-full">Location: Tamil Nadu, India</p>
+                        </div>
+                        <div class="shrink-0 pt-2 md:pt-0">
+                            <a href="https://wa.me/917418873664?text=--%20SECURE%20LINK%20INITIALIZED%20--" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-brand-neon text-black font-sans font-black text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(204,255,0,0.3)] whitespace-nowrap block">[ Connect Instantly ]</a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start pb-8">
+                        <div id="modal-sidebar" class="md:col-span-4 space-y-6 bg-white/5 border border-white/5 rounded-2xl p-5">
+                            <div>
+                                <h5 class="text-[11px] font-mono text-gray-400 uppercase tracking-widest font-bold border-b border-white/5 pb-2">// BACKGROUND DATA</h5>
+                                <div class="space-y-3 text-xs text-gray-300 font-sans mt-3">
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase">College Profile</span> <span class="text-white font-semibold">Thiagarajar Polytechnic College</span></p>
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase">Academic Track</span> <span class="text-white font-semibold block leading-tight">2nd-Year Computer Science & IT <span class="block mt-0.5">(2025-2028)</span></span></p>
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase">Linguistic Matrix</span> <span class="text-white font-semibold">Tamil, English, Urdu Proficient</span></p>
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase font-bold text-brand-neon">Secondary Education</span> <span class="text-white font-semibold">John Britto Matriculation Hr. Sec. School, Kamalapuram</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="modal-main-content" class="md:col-span-8 space-y-6 md:space-y-8">
+                            <div class="space-y-2">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// PROFESSIONAL MISSION</h5>
+                                <p class="text-gray-300 text-sm leading-relaxed font-sans">
+                                    Highly proactive 2nd-year Computer Science & IT student and co-founder of a regional web engineering venture. Focused on accelerating production launch speeds for clients by combining regional systems training with generative AI prompt workflows to produce production-grade frontend architectures rapidly.
+                                </p>
+                            </div>
+
+                            <div class="space-y-3 border-t border-white/5 pt-5">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// CORE SKILLS SPECTRUM</h5>
+                                <div class="flex flex-wrap gap-2 text-[10px] font-mono">
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Semantic HTML5 & CSS3 Architecture</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Vanilla JavaScript Interaction Logic</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Prompt Optimization via Google AI Studio</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">GitHub Pages CDN Hosting Workflows</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">DNS Zones Alignment (Hostinger, GoDaddy, Namecheap)</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">E-Commerce UI Assessment & Optimization</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4 border-t border-white/5 pt-5">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// VERIFIED CHRONOLOGY LOGS</h5>
+                                <div class="space-y-6 border-l border-white/10 pl-4 ml-2">
+                                    <div class="relative">
+                                        <span class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-brand-neon shadow-[0_0_8px_#CCFF00]"></span>
+                                        <h6 class="text-sm font-bold text-white uppercase font-sans">Co-Founder & Lead Architect | Marzoft Technologies</h6>
+                                        <p class="text-[10px] text-gray-500 font-mono">January 2026 — Active Present</p>
+                                        <p class="text-xs text-gray-400 mt-1.5 leading-relaxed font-sans">Co-built and launched clean, responsive promotional websites and online booking pages for local Salem businesses. Developed responsive fluid layouts that lock perfectly on mobile viewpoints, eliminating horizontal overflow bugs or shrunk image boxes on varied touchscreen arrays.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            },
+            chakravarthi: {
+                html: `
+                <div class="space-y-6 md:space-y-8 font-sans text-left text-white tracking-wide pb-10">
+                    <div id="modal-header-container" class="relative bg-gradient-to-r from-purple-950 to-neutral-900 rounded-2xl p-6 border border-white/10 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="w-24 h-24 rounded-full bg-purple-500/20 flex items-center justify-center border-2 border-brand-neon relative overflow-hidden shrink-0 shadow-[0_0_25px_rgba(204,255,0,0.35)]">
+                            <svg class="w-18 h-18 text-black" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g class="avatar-head-node" id="modal-chakra-head">
+                                    <circle cx="50" cy="50" r="22" fill="#ffdfba"/> 
+                                    <path d="M28 28C34 22 66 22 72 28C76 34 66 18 50 16C34 16 24 34 28 28Z" fill="#091e3a"/> 
+                                    <circle class="avatar-wink" cx="42" cy="46" r="2.5" fill="#000"/> 
+                                    <circle class="avatar-wink" cx="58" cy="46" r="2.5" fill="#000"/> 
+                                    <g class="glow-glasses stroke-[2.5]" stroke="#8B5CF6">
+                                        <circle cx="42" cy="46" r="6" />
+                                        <circle cx="58" cy="46" r="6" />
+                                        <line x1="48" y1="46" x2="52" y2="46" />
+                                    </g>
+                                    <path d="M44 57C44 57 46 60 50 60C54 60 56 57 55 57" stroke="#000" stroke-width="2.5" stroke-linecap="round"/> 
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="space-y-1.5 text-center md:text-left flex-grow min-w-0 w-full overflow-hidden">
+                            <h4 class="text-[20px] sm:text-2xl md:text-3xl font-black tracking-tight whitespace-nowrap truncate w-full">CHAKRAVARTHI N</h4>
+                            <p class="text-[9px] sm:text-xs font-mono text-brand-neon uppercase tracking-widest font-bold whitespace-nowrap truncate w-full">Full-Stack Engineer & Cloud Specialist</p>
+                            <p class="text-[9px] sm:text-[11px] text-gray-400 font-mono whitespace-nowrap truncate w-full">Location: Tamil Nadu, India</p>
+                        </div>
+                        <div class="shrink-0 pt-2 md:pt-0">
+                            <a href="https://wa.me/917845799263?text=--%20SECURE%20LINK%20INITIALIZED%20--" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-brand-neon text-black font-sans font-black text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(204,255,0,0.3)] whitespace-nowrap block">[ Connect Instantly ]</a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start pb-8">
+                        <div id="modal-sidebar" class="md:col-span-4 space-y-6 bg-white/5 border border-white/5 rounded-2xl p-5">
+                            <div>
+                                <h5 class="text-[11px] font-mono text-gray-400 uppercase tracking-widest font-bold border-b border-white/5 pb-2">// BACKGROUND DATA</h5>
+                                <div class="space-y-3 text-xs text-gray-300 font-sans mt-3">
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase">College Profile</span> <span class="text-white font-semibold">Thiagarajar Polytechnic College</span></p>
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase">Academic Track</span> <span class="text-white font-semibold">2nd-Year Computer Science Engineering (2025-2028)</span></p>
+                                    <p><span class="text-gray-400 block font-mono text-[10px] uppercase font-bold text-brand-neon">Secondary Education</span> <span class="text-white font-semibold">Narayana CBSE School, OMR, Chennai</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="modal-main-content" class="md:col-span-8 space-y-6 md:space-y-8">
+                            <div class="space-y-2">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// PROFESSIONAL BACKGROUND</h5>
+                                <p class="text-gray-300 text-sm leading-relaxed font-sans">
+                                    Detail-oriented 2nd-year Computer Science engineering student and co-founder of a regional web development venture. Highly proficient in utilizing structured layout rules and modern prompt architectures inside Google AI Studio to build, test, debug, and optimize responsive front-end web applications for all screen layouts.
+                                </p>
+                            </div>
+
+                            <div class="space-y-3 border-t border-white/5 pt-5">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// CORE SKILLS SPECTRUM</h5>
+                                <div class="flex flex-wrap gap-2 text-[10px] font-mono">
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Modern CSS3 Flexbox & Grid Systems</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Mobile Fluid Scaling & Touch Optimization</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Cross-Browser Styling Compatibility</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">GSAP Fluid Motion Easing Timelines</span>
+                                    <span class="interactive-skill-pill bg-[#121216] border border-white/10 px-3 py-1.5 rounded-lg text-gray-300">Git and GitHub Branch Release Management</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4 border-t border-white/5 pt-5">
+                                <h5 class="text-[11px] font-mono text-brand-neon uppercase tracking-widest font-bold">// EXPERIENCE TIMELINE NODE RECORDS</h5>
+                                <div class="space-y-6 border-l border-white/10 pl-4 ml-2">
+                                    <div class="relative">
+                                        <span class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-brand-neon shadow-[0_0_8px_#CCFF00]"></span>
+                                        <h6 class="text-sm font-bold text-white uppercase font-sans">Co-Founder & Front-End Developer | Marzoft Technologies</h6>
+                                        <p class="text-[10px] text-gray-500 font-mono">January 2026 — Active Present</p>
+                                        <p class="text-xs text-gray-400 mt-1.5 leading-relaxed font-sans">Co-designed regional web platforms. Developed responsive fluid layouts that lock perfectly on mobile viewpoints, eliminating horizontal overflow bugs or shrunk image boxes on varied touchscreen arrays.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            }
+        };
+
+        /* High-Performance RAF-based Interaction Tracker (Cross-Platform Touch & Mouse Engine) */
+        function addFaceTracking(triggerEl, targetEl, intensity = 0.1) {
+            if (!triggerEl || !targetEl) return; 
+            
+            let requestID = null;
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+
+            const setCoordinates = (clientX, clientY) => {
+                const rect = triggerEl.getBoundingClientRect();
+                const relX = clientX - (rect.left + rect.width / 2);
+                const relY = clientY - (rect.top + rect.height / 2);
+                targetX = relX * intensity;
+                targetY = relY * intensity;
+                
+                if (!requestID) {
+                    requestID = requestAnimationFrame(updateFacePosition);
+                }
+            };
+
+            const updateFacePosition = () => {
+                currentX += (targetX - currentX) * 0.12;
+                currentY += (targetY - currentY) * 0.12;
+                gsap.set(targetEl, { x: currentX, y: currentY, force3D: true });
+                
+                if (Math.abs(targetX - currentX) < 0.05 && Math.abs(targetY - currentY) < 0.05) {
+                    requestID = null;
+                } else {
+                    requestID = requestAnimationFrame(updateFacePosition);
+                }
+            };
+
+            const resetPosition = () => {
+                targetX = 0;
+                targetY = 0;
+                if (!requestID) {
+                    requestID = requestAnimationFrame(updateFacePosition);
+                }
+            };
+
+            // Desktop mouse
+            triggerEl.addEventListener('mousemove', (e) => {
+                setCoordinates(e.clientX, e.clientY);
+            });
+            triggerEl.addEventListener('mouseleave', resetPosition);
+
+            // Android touch
+            triggerEl.addEventListener('touchstart', (e) => {
+                if (e.touches && e.touches.length > 0) {
+                    setCoordinates(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            triggerEl.addEventListener('touchmove', (e) => {
+                if (e.touches && e.touches.length > 0) {
+                    setCoordinates(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            triggerEl.addEventListener('touchend', resetPosition, { passive: true });
+            triggerEl.addEventListener('touchcancel', resetPosition, { passive: true });
+        }
+
+        function openNeuralInterface(founder) {
+            const data = neuralProfiles[founder]; if (!data) return;
+            document.body.style.overflow = 'hidden';
+            
+            const modal = document.getElementById('neural-linkedin-modal');
+            const windowEl = document.getElementById('neural-window');
+            const injectionArea = document.getElementById('neural-profile-injection');
+            
+            injectionArea.innerHTML = data.html;
+            injectionArea.scrollTop = 0;
+            
+            modal.classList.add('modal-active');
+            
+            gsap.killTweensOf([modal, windowEl]);
+
+            const isMobile = window.innerWidth < 768;
+
+            if (isMobile) {
+                // High-performance clean fade & micro-translation timeline. 
+                // Omits layout scaling to prevent real-time font resizing raster latency on Android engines.
+                gsap.set(windowEl, { scale: 1, rotationX: 0, transformPerspective: "none" });
+                
+                const tl = gsap.timeline();
+                tl.fromTo(modal, 
+                    { opacity: 0 }, 
+                    { opacity: 1, duration: 0.18, ease: "none" }
+                ).fromTo(windowEl, 
+                    { opacity: 0, y: 15 }, 
+                    { opacity: 1, y: 0, duration: 0.22, ease: "power2.out", force3D: true },
+                    "-=0.08"
+                ).fromTo(["#modal-header-container", "#modal-sidebar", "#modal-main-content"], 
+                    { opacity: 0, y: 8 }, 
+                    { opacity: 1, y: 0, duration: 0.18, stagger: 0.04, ease: "power1.out", force3D: true },
+                    "-=0.1"
+                );
+            } else {
+                // Premium Desktop animation timeline
+                const tl = gsap.timeline();
+                tl.fromTo(modal, 
+                    { opacity: 0 }, 
+                    { opacity: 1, duration: 0.3, ease: "power2.out" }
+                ).fromTo(windowEl, 
+                    { scale: 0.97, opacity: 0, y: 30, rotationX: 4 }, 
+                    { scale: 1, opacity: 1, y: 0, rotationX: 0, duration: 0.45, ease: "power3.out", transformPerspective: 1200, force3D: true },
+                    "-=0.2"
+                ).fromTo(["#modal-header-container", "#modal-sidebar", "#modal-main-content"], 
+                    { opacity: 0, y: 15 }, 
+                    { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power2.out", force3D: true },
+                    "-=0.25"
+                );
+            }
+
+            // Bind cross-platform face tracking routines post-transition
+            setTimeout(() => {
+                const modalHeadChakra = document.getElementById('modal-chakra-head');
+                const modalHeadRasool = document.getElementById('modal-rasool-head'); 
+                
+                if (modalHeadChakra) addFaceTracking(windowEl, modalHeadChakra, 0.08);
+                if (modalHeadRasool) addFaceTracking(windowEl, modalHeadRasool, 0.08);
+            }, isMobile ? 300 : 500); 
+        }
+
+        function closeNeuralInterface() {
+            document.body.style.overflow = '';
+            const modal = document.getElementById('neural-linkedin-modal');
+            const windowEl = document.getElementById('neural-window');
+            
+            gsap.killTweensOf([modal, windowEl]);
+            
+            const isMobile = window.innerWidth < 768;
+            const duration = isMobile ? 0.18 : 0.35;
+            const ease = isMobile ? "power2.in" : "power3.in";
+            
+            if (isMobile) {
+                // High velocity mobile exit sequence targeting translation parameters only
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        modal.classList.remove('modal-active');
+                    }
+                });
+                tl.to(windowEl, {
+                    opacity: 0,
+                    y: 15,
+                    duration: 0.18,
+                    ease: "power2.in",
+                    force3D: true
+                }).to(modal, {
+                    opacity: 0,
+                    duration: 0.12,
+                    ease: "none"
+                }, "-=0.08");
+            } else {
+                // Refined desktop exit timeline
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        modal.classList.remove('modal-active');
+                    }
+                });
+                tl.to(windowEl, {
+                    scale: 0.97,
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.28,
+                    ease: "power2.in",
+                    force3D: true
+                }).to(modal, {
+                    opacity: 0,
+                    duration: 0.22,
+                    ease: "power1.in"
+                }, "-=0.12");
+            }
+        }
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: ABOUT US                                  //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: INVITATIONS                              //
+// ========================================================================= //
+
+        function runLiveCountdown() {
+            let hours = 14; let minutes = 42; let seconds = 0;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; if (minutes < 0) { minutes = 59; hours--; if (hours < 0) { hours = 23; } } }
+                const hString = String(hours).padStart(2, '0'); const mString = String(minutes).padStart(2, '0'); const sString = String(seconds).padStart(2, '0');
+                document.querySelectorAll('.wedding-ticker').forEach(ticker => {
+                    ticker.innerHTML = `<span>${hString}</span><span class="colon">:</span><span>${mString}</span><span class="colon">:</span><span>${sString}</span>`;
+                });
+            }, 1000);
+        }
+
+        let currentCelebration = 'wedding';
+        function switchCelebrationTab(tab) {
+            currentCelebration = tab;
+            const tabWed = document.getElementById('tab-wedding');
+            const tabBday = document.getElementById('tab-birthday');
+            const title = document.getElementById('cel-title');
+            const desc = document.getElementById('cel-desc');
+            
+            if(tab === 'wedding') {
+                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-gold/20 text-brand-gold border border-brand-gold/30 transition-all whitespace-nowrap";
+                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
+                title.innerText = "ROYAL WEDDING";
+                title.className = "text-2xl font-extrabold text-brand-gold tracking-tight font-orbitron mb-2 transition-colors duration-300";
+                desc.innerText = "Interactive High-Ticket Invitation Concept featuring delicate gold aesthetics, fluid motion coordinates, and automated event countdowns.";
+            } else {
+                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 transition-all whitespace-nowrap";
+                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
+                title.innerText = "CELESTIAL BIRTHDAY";
+                title.className = "text-2xl font-extrabold text-brand-cyan tracking-tight font-orbitron mb-2 transition-colors duration-300";
+                desc.innerText = "Digital Spatial Experience engineered with high-frequency particle elements and glowing motion frames to deliver rich emotional interaction vectors.";
+            }
+        }
+
+        function selectCelebrationSuite() {
+            const radioId = currentCelebration === 'wedding' ? 'tier-wedding' : 'tier-birthday';
+            const radioEl = document.getElementById(radioId);
+            if (radioEl) { radioEl.checked = true; updateEstimate(); }
+
+            const scopeMod = document.getElementById('module-scope');
+            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
+            const lockState = document.getElementById('lock-state');
+            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
+            const proceedBtn = document.getElementById('proceed-btn');
+            if (proceedBtn) proceedBtn.classList.remove('hidden');
+
+            const contactSection = document.getElementById('contact');
+            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
+        }
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: INVITATIONS                                //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: INVESTMENT                               //
+// ========================================================================= //
+
+        const cardA = document.getElementById('cardA');
+        const cardB = document.getElementById('cardB');
+        const cardC = document.getElementById('cardC');
+
+        let slotMapping = new Map([ [cardA, 'left'], [cardB, 'center'], [cardC, 'right'] ]);
+        let isSwapping = false;
+
+        const getCoords = (slot, spreadValue) => {
+            const xOffset = isMobileDevice ? 72 : 110; 
+            const scaleFactor = isMobileDevice ? 0.75 : 1.0;
+            const zOffset = isMobileDevice ? -80 : -150; 
+
+            if (slot === 'center') return { xPercent: 0, rotationY: 0, z: (isMobileDevice ? 20 : 50) * spreadValue, scale: (1 + (0.05 * spreadValue)) * scaleFactor, opacity: 1 };
+            if (slot === 'left') return { xPercent: -xOffset * spreadValue, rotationY: (isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
+            if (slot === 'right') return { xPercent: xOffset * spreadValue, rotationY: -(isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
+        };
+
+        function renderSlots(spreadValue = 1, animate = false, duration = 0.6) {
+            slotMapping.forEach((slot, card) => {
+                const coords = getCoords(slot, spreadValue);
+                const zIndexValue = slot === 'center' ? 30 : 10;
+
+                if (animate) {
+                    gsap.set(card, { zIndex: zIndexValue });
+                    gsap.to(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, duration: duration, overwrite: "auto", ease: "power2.out", force3D: true });
+                } else {
+                    gsap.set(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, zIndex: zIndexValue, force3D: true });
+                }
+            });
+        }
+
+        function updateEstimate() {
+            const selectedTier = document.querySelector('input[name="tier-choice"]:checked');
+            const labels = { 
+                start: document.getElementById('label-start'), 
+                pro: document.getElementById('label-pro'), 
+                elite: document.getElementById('label-elite'),
+                wedding: document.getElementById('label-wedding'),
+                birthday: document.getElementById('label-birthday')
+            };
+            const liveEstimate = document.getElementById('live-estimate');
+
+            if (labels.start) {
+                Object.values(labels).forEach(lbl => { 
+                    if(lbl) {
+                        lbl.classList.remove('tier-start-spatial-active', 'tier-pro-spatial-active', 'tier-elite-spatial-active', 'tier-wedding-spatial-active', 'tier-birthday-spatial-active');
+                        lbl.classList.remove('tier-start-active', 'tier-pro-active', 'tier-elite-active');
+                    }
+                });
+            }
+            if (liveEstimate) {
+                liveEstimate.classList.remove('text-brand-start', 'text-brand-neon', 'text-brand-gold', 'text-brand-cyan', 'estimate-glow-start', 'estimate-glow-pro', 'estimate-glow-elite', 'estimate-glow-wedding', 'estimate-glow-birthday');
+            }
+
+            let displayVal = "PRO TIER SELECTED";
+            if (selectedTier) {
+                if (selectedTier.value === 'start') { 
+                    displayVal = "START TIER SELECTED"; 
+                    if(labels.start) labels.start.classList.add('tier-start-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-start', 'estimate-glow-start'); 
+                } 
+                else if (selectedTier.value === 'pro') { 
+                    displayVal = "PRO TIER SELECTED"; 
+                    if(labels.pro) labels.pro.classList.add('tier-pro-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-neon', 'estimate-glow-pro'); 
+                } 
+                else if (selectedTier.value === 'elite') { 
+                    displayVal = "ELITE TIER SELECTED"; 
+                    if(labels.elite) labels.elite.classList.add('tier-elite-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-gold'); 
+                }
+                else if (selectedTier.value === 'wedding') { 
+                    displayVal = "WEDDING SUITE SELECTED"; 
+                    if(labels.wedding) labels.wedding.classList.add('tier-wedding-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-wedding'); 
+                }
+                else if (selectedTier.value === 'birthday') { 
+                    displayVal = "BIRTHDAY SUITE SELECTED"; 
+                    if(labels.birthday) labels.birthday.classList.add('tier-birthday-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-cyan', 'estimate-glow-birthday'); 
+                }
+            }
+            if (liveEstimate) {
+                liveEstimate.innerText = displayVal;
+            }
+        }
+
+        let animState = { spread: 0 };
+
+        function selectTier(tierName) {
+            const tierLower = tierName.toLowerCase(); 
+            const radioEl = document.getElementById('tier-' + tierLower);
+            if (radioEl) radioEl.checked = true; updateEstimate();
+            const scopeMod = document.getElementById('module-scope');
+            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
+            const lockState = document.getElementById('lock-state');
+            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
+            const proceedBtn = document.getElementById('proceed-btn');
+            if (proceedBtn) proceedBtn.classList.remove('hidden');
+            const contactSection = document.getElementById('contact');
+            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
+        }
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: INVESTMENT                                //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: CONNECT                                  //
+// ========================================================================= //
+
+        function showError(errorText) {
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            panel.classList.remove('hidden', 'border-blue-500/20', 'bg-blue-950/20'); panel.classList.add('border-red-500/30', 'bg-red-950/30');
+            message.innerText = errorText; message.classList.remove('text-blue-300'); message.classList.add('text-red-400'); spinner.classList.add('hidden');
+        }
+
+        function nextModule() {
+            const name = document.getElementById('client-name').value.trim(); const phone = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            if(!name) { showError("Please enter your name to continue."); return; }
+            const phoneClean = phone.replace(/[^0-9]/g, '');
+            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
+
+            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
+            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
+            message.innerText = "Securing session. Directing you to Briefing Scope...";
+
+            gsap.to("#module-identity", {
+                y: -20, opacity: 0, duration: 0.5, ease: "power2.inOut",
+                onComplete: () => {
+                    document.getElementById('module-identity').style.display = 'none';
+                    const scopeModule = document.getElementById('module-scope'); scopeModule.style.display = 'block'; scopeModule.style.opacity = '0';
+                    panel.classList.add('hidden');
+                    const lockState = document.getElementById('lock-state'); 
+                    lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.add('text-green-400', 'bg-green-950/20', 'border-green-500/10');
+                    document.getElementById('console-status').innerText = "Step 2 of 2: Configure your brief";
+                    scopeModule.classList.remove('opacity-30', 'pointer-events-none');
+                    gsap.fromTo("#module-scope", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
+                }
+            });
+        }
+
+        function prevModule() {
+            const scopeModule = document.getElementById('module-scope');
+            gsap.to("#module-scope", {
+                y: 20, opacity: 0, duration: 0.5, ease: "power2.inOut",
+                onComplete: () => {
+                    scopeModule.style.display = 'none'; scopeModule.classList.add('opacity-30', 'pointer-events-none');
+                    const identityModule = document.getElementById('identity-module'); if (identityModule) { identityModule.style.display = 'block'; identityModule.style.opacity = '0'; }
+                    const moduleIdentity = document.getElementById('module-identity'); if (moduleIdentity) { moduleIdentity.style.display = 'block'; moduleIdentity.style.opacity = '0'; }
+                    const lockState = document.getElementById('lock-state'); 
+                    lockState.innerText = "Awaiting verification"; lockState.classList.add('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.remove('text-green-400', 'bg-green-950/20', 'border-green-500/10');
+                    document.getElementById('console-status').innerText = "Step 1 of 2: Let's start with who you are";
+                    gsap.fromTo("#module-identity", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
+                }
+            });
+        }
+
+        function executeIntake() {
+            const name = document.getElementById('client-name').value.trim(); const phoneNum = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
+            const selectedTierEl = document.querySelector('input[name="tier-choice"]:checked'); const selectedTier = selectedTierEl ? selectedTierEl.value.toUpperCase() : "PRO";
+            const deadline = document.getElementById('client-deadline').value.trim(); const specs = document.getElementById('client-specs').value.trim();
+            const finalEstimate = document.getElementById('live-estimate').innerText; const btn = document.getElementById('submit-btn');
+
+            if(!name) { showError("Please enter your name to continue."); return; }
+            const phoneClean = phoneNum.replace(/[^0-9]/g, '');
+            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
+            if(!deadline || !specs) { showError("Please specify your project details and target timeline."); return; }
+            
+            btn.querySelector('span').innerHTML = "Submitting brief..."; btn.disabled = true;
+            
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
+            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
+            message.innerText = "Brief compiled. Directing you to Lead workspace gateway...";
+            
+            const messageString = encodeURIComponent(`-- MARZOFT CONFIGURATOR INTAKE --\nName: ${name}\nPhone: ${phoneNum}\nEmail: ${email}\nSystem Core: ${selectedTier}\nTimeline Requirement: ${deadline}\nProject Details: ${specs}\nSystem Value Status: ${finalEstimate}\n-----------------------------`);
+            setTimeout(() => { window.location.href = `https://wa.me/917418873664?text=${messageString}`; }, 1500);
+        }
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: CONNECT                                    //
+// ========================================================================= //
+
+
+
+
+
+
+// ========================================================================= //
+// ⚡ START OF LOGIC RESTRUCTURING: DOM LOAD ORCHESTRATION                   //
+// ========================================================================= //
+
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.to(".hero-bg img", { scale: 1.35, scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: 1.2 } });
+            gsap.to(".hero-content", { opacity: 0, y: -100, scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: 0.8 } });
+
+            // Arrow starts pointing up (rotate: 180) and rotates counter-clockwise through the left to point down (rotate: 0) as the user scrolls into view
+            gsap.fromTo("#arrow-container div", 
+                { rotate: 180 }, 
+                { 
+                    rotate: 0, 
+                    scrollTrigger: {
+                        trigger: "#about",
+                        start: "top 80%",
+                        end: "top 20%",
+                        scrub: true
+                    }
+                }
+            );
+
+            ScrollTrigger.create({ trigger: "#portfolio-ecosystem", start: "top top", end: "+=1500", pin: true, scrub: true, onUpdate: (self) => { targetScrollOffset = self.progress * 3; } });
+            requestAnimationFrame(renderShowcaseLoop);
+            updateActiveShowcase(2); 
+            runLiveCountdown();
+            renderSlots(0);
+
+            gsap.to(animState, {
+                spread: 1, ease: "none",
+                scrollTrigger: {
+                    trigger: "#pricing", start: "top top", end: "+=1200", pin: true, scrub: 1.5,
+                    onUpdate: (self) => { if (!isSwapping) renderSlots(self.progress); },
+                    onLeave: () => { if (!isSwapping) renderSlots(1); },
+                    onEnterBack: () => { if (!isSwapping) renderSlots(animState.spread); }
+                }
+            });
+
+            document.querySelectorAll('.pricing-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('button')) return;
+                    const clickedSlot = slotMapping.get(card);
+                    if (clickedSlot === 'center') return; 
+                    let centerCard = null;
+                    for (let [cardEl, slot] of slotMapping.entries()) { if (slot === 'center') { centerCard = cardEl; break; } }
+                    if (centerCard) {
+                        isSwapping = true;
+                        slotMapping.set(card, 'center'); slotMapping.set(centerCard, clickedSlot);
+                        renderSlots(1, true, 0.6);
+                        setTimeout(() => { isSwapping = false; }, 600);
+                    }
+                });
+                card.addEventListener('keypress', (e) => { if (e.key === 'Enter') card.click(); });
+            });
+
+            const iframe = document.getElementById('preview-iframe');
+            const loader = document.getElementById('preview-loader');
+            if (iframe && loader) { iframe.onload = () => { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 300); iframe.style.opacity = '1'; }; }
+            
+            if (!isMobileDevice && canHover) {
+                document.querySelectorAll('.showcase-slide-card, .luxury-experience-card').forEach(card => {
+                    card.addEventListener('mousemove', e => {
+                        const rect = card.getBoundingClientRect();
+                        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                    });
+                });
+            }
+
+            const cardRasool = document.getElementById('card-rasool');
+            const headRasool = document.getElementById('rasool-head-group');
+            if (cardRasool && headRasool) addFaceTracking(cardRasool, headRasool, 0.14);
+
+            const cardChakra = document.getElementById('card-chakra');
+            const headChakra = document.getElementById('chakra-head-group');
+            if (cardChakra && headChakra) addFaceTracking(cardChakra, headChakra, 0.14);
+
+            updateEstimate();
+        });
+
+// ========================================================================= //
+// 🛑 END OF LOGIC RESTRUCTURING: DOM LOAD ORCHESTRATION                     //
+// ========================================================================= //
+
+
+    </script>
+</body>
+</html>
