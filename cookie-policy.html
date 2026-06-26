@@ -36,45 +36,49 @@
         </a>
     </div>
 
-    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-8 md:p-12 relative z-10">
-        <header class="border-b border-white/10 pb-6 mb-8">
-            <h1 class="font-orbitron text-2xl md:text-3xl font-black tracking-wider uppercase text-white mb-3">Cookie & Storage Policy</h1>
-            <p class="font-mono text-[9px] md:text-[10px] text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
+    <main class="w-full max-w-4xl spatial-glass-card rounded-3xl p-6 md:p-12 relative z-10">
+        <header class="border-b border-white/10 pb-4 md:pb-6 mb-6 md:mb-8 overflow-hidden">
+            <!-- Hidden on mobile, visible on md and up -->
+            <span class="hidden md:block font-mono text-[10px] text-brand-pro tracking-[0.2em] uppercase mb-3">// PERSISTENT_MEMORY_CONFIGURATION //</span>
+            
+            <h1 class="font-orbitron text-[12.5px] sm:text-lg md:text-3xl font-black tracking-normal md:tracking-wider uppercase text-white mb-2 md:mb-3 whitespace-nowrap">Cookie & Storage Policy</h1>
+            <p class="font-mono text-[8px] md:text-[10px] text-gray-500 tracking-widest uppercase">Last Updated: June 2026</p>
         </header>
 
-        <div class="space-y-8 text-gray-400 text-xs md:text-[13px] leading-relaxed font-sans">
+        <!-- Scaled down text for mobile (text-[10px]), normal for desktop (md:text-[13px]) -->
+        <div class="space-y-6 md:space-y-8 text-gray-400 text-[10px] md:text-[13px] leading-relaxed font-sans">
             <p>Marzoft Technologies ("we," "our," or "us") operates as a high-performance digital engineering studio. We prioritize user privacy and system transparency. This policy explains how our technology uses browser storage and external scripts.</p>
 
             <section>
-                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">1. OUR PRIVACY COMMITMENT</h2>
+                <h2 class="font-orbitron text-[11px] md:text-base font-bold text-white tracking-wide uppercase mb-2 md:mb-3">1. OUR PRIVACY COMMITMENT</h2>
                 <p>We do not track, collect, or share your personal data for advertising, marketing, or third-party retargeting. We never monetize user information. We do not use tracking pixels, behavioral cookies, or ad-targeting beacons.</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">2. WHAT ARE COOKIES AND LOCAL STORAGE?</h2>
+                <h2 class="font-orbitron text-[11px] md:text-base font-bold text-white tracking-wide uppercase mb-2 md:mb-3">2. WHAT ARE COOKIES AND LOCAL STORAGE?</h2>
                 <ul class="space-y-2 ml-2">
-                    <li class="flex items-start gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span>Cookies are small data files saved by web browsers to maintain functional states.</span></li>
-                    <li class="flex items-start gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span>LocalStorage / SessionStorage are high-performance memory buckets inside your browser that allow our apps to run smoothly.</span></li>
+                    <li class="flex items-start gap-2 md:gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span>Cookies are small data files saved by web browsers to maintain functional states.</span></li>
+                    <li class="flex items-start gap-2 md:gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span>LocalStorage / SessionStorage are high-performance memory buckets inside your browser that allow our apps to run smoothly.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">3. WHY WE USE STORAGE AND EXTERNAL SCRIPTS</h2>
-                <p class="mb-3">We use lightweight external scripts and browser storage exclusively for technical performance and functional stability:</p>
+                <h2 class="font-orbitron text-[11px] md:text-base font-bold text-white tracking-wide uppercase mb-2 md:mb-3">3. WHY WE USE STORAGE AND EXTERNAL SCRIPTS</h2>
+                <p class="mb-2 md:mb-3">We use lightweight external scripts and browser storage exclusively for technical performance and functional stability:</p>
                 <ul class="space-y-2 ml-2">
-                    <li class="flex items-start gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Immersive UI Performance:</strong> We load external script libraries via secure Content Delivery Networks (CDNs)—specifically Three.js (for 3D rendering), GSAP (for smooth animation pipelines), and Lenis (for inertial scrolling). These tools require minimal browser resources to deliver cinematic, hardware-accelerated visuals.</span></li>
-                    <li class="flex items-start gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Data Persistence & State:</strong> We use LocalStorage to keep your personalized changes alive when you navigate between our demo pages or refresh the browser. This ensures your customized inputs (like calculator state or demo parameter selections) are not wiped out.</span></li>
-                    <li class="flex items-start gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Secure Cloud Handshakes:</strong> We utilize Supabase as our secure database backend. When you interact with our SaaS dashboards, browser storage holds temporary, encrypted authentication tokens to keep your session secure while you manage your workspace.</span></li>
+                    <li class="flex items-start gap-2 md:gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Immersive UI Performance:</strong> We load external script libraries via secure Content Delivery Networks (CDNs)—specifically Three.js (for 3D rendering), GSAP (for smooth animation pipelines), and Lenis (for inertial scrolling). These tools require minimal browser resources to deliver cinematic, hardware-accelerated visuals.</span></li>
+                    <li class="flex items-start gap-2 md:gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Data Persistence & State:</strong> We use LocalStorage to keep your personalized changes alive when you navigate between our demo pages or refresh the browser. This ensures your customized inputs (like calculator state or demo parameter selections) are not wiped out.</span></li>
+                    <li class="flex items-start gap-2 md:gap-3"><span class="text-brand-pro font-mono mt-0.5">▹</span> <span><strong>Secure Cloud Handshakes:</strong> We utilize Supabase as our secure database backend. When you interact with our SaaS dashboards, browser storage holds temporary, encrypted authentication tokens to keep your session secure while you manage your workspace.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">4. YOUR CONTROL</h2>
+                <h2 class="font-orbitron text-[11px] md:text-base font-bold text-white tracking-wide uppercase mb-2 md:mb-3">4. YOUR CONTROL</h2>
                 <p>You have full authority over your device's security. You can wipe your browser cache, block LocalStorage, or disable functional tokens anytime within your browser’s advanced settings.</p>
             </section>
 
             <section>
-                <h2 class="font-orbitron text-sm md:text-base font-bold text-white tracking-wide uppercase mb-3">5. CONTACT</h2>
+                <h2 class="font-orbitron text-[11px] md:text-base font-bold text-white tracking-wide uppercase mb-2 md:mb-3">5. CONTACT</h2>
                 <p>For technical clarifications regarding our stack, reach out to us at rmaaz1612@gmail.com.</p>
             </section>
         </div>
