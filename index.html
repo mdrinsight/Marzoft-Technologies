@@ -372,12 +372,6 @@
         </div>
     </nav>
 
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 1 - INTRO HERO                               -->
-<!-- ========================================================================= -->
-
     <!-- Parallax Hero Layout -->
     <header id="home" class="hero-section relative w-full h-screen overflow-hidden flex items-center justify-center">
         <div class="hero-bg absolute inset-0 w-full h-full gpu-accel z-1" aria-hidden="true">
@@ -390,22 +384,10 @@
         </div>
     </header>
 
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 1 - INTRO HERO                                 -->
-<!-- ========================================================================= -->
-
-
-
     <!-- Page Body Stream Layer -->
     <div class="content-layer grid-bg relative z-20 bg-brand-dark">
         <main class="w-full">
             
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 2 - ABOUT US                                 -->
-<!-- ========================================================================= -->
-
             <!-- Architectural Genesis / Studio Section -->
             <div id="about" class="w-full relative bg-brand-dark border-b border-white/5 py-24 md:py-36 overflow-hidden">
                 
@@ -491,21 +473,9 @@
                 </section>
             </div>
 
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 2 - ABOUT US                                   -->
-<!-- ========================================================================= -->
-
-
-
             <!-- UNIFIED PORTFOLIO CONTAINMENT WRAPPER -->
             <div id="portfolio" class="relative bg-brand-dark w-full">
                 
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 3 - SHOWCASE                                 -->
-<!-- ========================================================================= -->
-
                 <section id="portfolio-ecosystem" class="w-full min-h-screen relative bg-brand-dark border-t border-white/5 overflow-hidden flex flex-col items-center justify-center py-20">
                     <div class="absolute inset-0 grid-bg opacity-15 click-through z-2" aria-hidden="true"></div>
                     <div class="w-full max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center">
@@ -628,17 +598,6 @@
                     </div>
                 </section>
 
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 3 - SHOWCASE                                   -->
-<!-- ========================================================================= -->
-
-
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 4 - INVITATIONS                              -->
-<!-- ========================================================================= -->
-
                 <section id="portfolio-luxury" class="w-full relative bg-[#050505] border-t border-white/5 py-12 md:py-16 flex flex-col justify-center">
                     <div class="absolute inset-0 grid-bg opacity-10 click-through z-1" aria-hidden="true"></div>
                     <div class="w-full max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
@@ -726,17 +685,6 @@
                 </section>
                 
             </div>
-
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 4 - INVITATIONS                                 -->
-<!-- ========================================================================= -->
-
-
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 5 - INVESTMENT                               -->
-<!-- ========================================================================= -->
 
             <!-- INVESTMENT DECK PANEL -->
             <section id="pricing" class="pricing-section">
@@ -859,17 +807,6 @@
                     </div>
                 </div>
             </section>
-
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 5 - INVESTMENT                                 -->
-<!-- ========================================================================= -->
-
-
-
-
-<!-- ========================================================================= -->
-<!-- ⚡ START OF SECTION: SECTION 6 - CONNECT                                  -->
-<!-- ========================================================================= -->
 
             <!-- SECURE CLIENT INTAKE CONSOLE -->
             <section id="contact" class="spatial-obsidian min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-24">
@@ -1016,23 +953,11 @@
 
                 </div>
             </section>
-
-<!-- ========================================================================= -->
-<!-- 🛑 END OF SECTION: SECTION 6 - CONNECT                                    -->
-<!-- ========================================================================= -->
-
-
         </main>
     </div>
 
     <!-- Script Orchestration Core -->
     <script>
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: SETUP & INTRO                            //
-// ========================================================================= //
-
         const isMobileDevice = window.innerWidth < 768;
         const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -1045,19 +970,6 @@
             });
         });
 
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: SETUP & INTRO                             //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: SHOWCASE                                 //
-// ========================================================================= //
-
         const marzoftShowcase = [
             { title: "Marzoft Royal Wedding", url: "https://mdrinsight.github.io/Wedding-Invitation-Demo/" }, 
             { title: "Marzoft Celestial Birthday", url: "https://mdrinsight.github.io/Birthday-Wishes-Demo/" }, 
@@ -1068,6 +980,107 @@
         ];
 
         let activeShowcaseIndex = 2; 
+
+        const cardA = document.getElementById('cardA');
+        const cardB = document.getElementById('cardB');
+        const cardC = document.getElementById('cardC');
+
+        let slotMapping = new Map([ [cardA, 'left'], [cardB, 'center'], [cardC, 'right'] ]);
+        let isSwapping = false;
+
+        const getCoords = (slot, spreadValue) => {
+            const xOffset = isMobileDevice ? 72 : 110; 
+            const scaleFactor = isMobileDevice ? 0.75 : 1.0;
+            const zOffset = isMobileDevice ? -80 : -150; 
+
+            if (slot === 'center') return { xPercent: 0, rotationY: 0, z: (isMobileDevice ? 20 : 50) * spreadValue, scale: (1 + (0.05 * spreadValue)) * scaleFactor, opacity: 1 };
+            if (slot === 'left') return { xPercent: -xOffset * spreadValue, rotationY: (isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
+            if (slot === 'right') return { xPercent: xOffset * spreadValue, rotationY: -(isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
+        };
+
+        function renderSlots(spreadValue = 1, animate = false, duration = 0.6) {
+            slotMapping.forEach((slot, card) => {
+                const coords = getCoords(slot, spreadValue);
+                const zIndexValue = slot === 'center' ? 30 : 10;
+
+                if (animate) {
+                    gsap.set(card, { zIndex: zIndexValue });
+                    gsap.to(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, duration: duration, overwrite: "auto", ease: "power2.out", force3D: true });
+                } else {
+                    gsap.set(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, zIndex: zIndexValue, force3D: true });
+                }
+            });
+        }
+
+        function updateEstimate() {
+            const selectedTier = document.querySelector('input[name="tier-choice"]:checked');
+            const labels = { 
+                start: document.getElementById('label-start'), 
+                pro: document.getElementById('label-pro'), 
+                elite: document.getElementById('label-elite'),
+                wedding: document.getElementById('label-wedding'),
+                birthday: document.getElementById('label-birthday')
+            };
+            const liveEstimate = document.getElementById('live-estimate');
+
+            if (labels.start) {
+                Object.values(labels).forEach(lbl => { 
+                    if(lbl) {
+                        lbl.classList.remove('tier-start-spatial-active', 'tier-pro-spatial-active', 'tier-elite-spatial-active', 'tier-wedding-spatial-active', 'tier-birthday-spatial-active');
+                        lbl.classList.remove('tier-start-active', 'tier-pro-active', 'tier-elite-active');
+                    }
+                });
+            }
+            if (liveEstimate) {
+                liveEstimate.classList.remove('text-brand-start', 'text-brand-neon', 'text-brand-gold', 'text-brand-cyan', 'estimate-glow-start', 'estimate-glow-pro', 'estimate-glow-elite', 'estimate-glow-wedding', 'estimate-glow-birthday');
+            }
+
+            let displayVal = "PRO TIER SELECTED";
+            if (selectedTier) {
+                if (selectedTier.value === 'start') { 
+                    displayVal = "START TIER SELECTED"; 
+                    if(labels.start) labels.start.classList.add('tier-start-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-start', 'estimate-glow-start'); 
+                } 
+                else if (selectedTier.value === 'pro') { 
+                    displayVal = "PRO TIER SELECTED"; 
+                    if(labels.pro) labels.pro.classList.add('tier-pro-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-neon', 'estimate-glow-pro'); 
+                } 
+                else if (selectedTier.value === 'elite') { 
+                    displayVal = "ELITE TIER SELECTED"; 
+                    if(labels.elite) labels.elite.classList.add('tier-elite-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-gold'); 
+                }
+                else if (selectedTier.value === 'wedding') { 
+                    displayVal = "WEDDING SUITE SELECTED"; 
+                    if(labels.wedding) labels.wedding.classList.add('tier-wedding-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-wedding'); 
+                }
+                else if (selectedTier.value === 'birthday') { 
+                    displayVal = "BIRTHDAY SUITE SELECTED"; 
+                    if(labels.birthday) labels.birthday.classList.add('tier-birthday-spatial-active'); 
+                    if(liveEstimate) liveEstimate.classList.add('text-brand-cyan', 'estimate-glow-birthday'); 
+                }
+            }
+            if (liveEstimate) {
+                liveEstimate.innerText = displayVal;
+            }
+        }
+
+        let animState = { spread: 0 };
+
+        function runLiveCountdown() {
+            let hours = 14; let minutes = 42; let seconds = 0;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; if (minutes < 0) { minutes = 59; hours--; if (hours < 0) { hours = 23; } } }
+                const hString = String(hours).padStart(2, '0'); const mString = String(minutes).padStart(2, '0'); const sString = String(seconds).padStart(2, '0');
+                document.querySelectorAll('.wedding-ticker').forEach(ticker => {
+                    ticker.innerHTML = `<span>${hString}</span><span class="colon">:</span><span>${mString}</span><span class="colon">:</span><span>${sString}</span>`;
+                });
+            }, 1000);
+        }
 
         let targetScrollOffset = 0;
         let currentScrollOffset = 0;
@@ -1080,97 +1093,6 @@
             if (targetIndex !== activeShowcaseIndex) updateActiveShowcase(targetIndex);
             requestAnimationFrame(renderShowcaseLoop);
         }
-
-        function updateActiveShowcase(index) {
-            activeShowcaseIndex = index;
-            const colorMappingIdx = Math.max(0, index - 2); 
-            const progressionEl = document.getElementById('showcase-progression');
-            if (progressionEl) {
-                progressionEl.innerText = `${colorMappingIdx + 1} / 4`;
-                const progressionColors = ["#10B981", "#8B5CF6", "#3B82F6", "#E63946"];
-                progressionEl.style.color = progressionColors[colorMappingIdx];
-            }
-
-            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
-            cards.forEach((card) => {
-                const cardIdx = parseInt(card.getAttribute('data-index'));
-                if (cardIdx === index) { card.classList.add('active-focus'); card.classList.add('click-target'); } else { card.classList.remove('active-focus'); card.classList.remove('click-target'); }
-            });
-        }
-
-        function updateDeckStackProgress(scrollOffset) {
-            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
-            const isMobile = window.innerWidth < 768;
-            const xMax = isMobile ? 35 : 140; const zMax = isMobile ? -100 : -150; const ryMax = isMobile ? -10 : -15; 
-
-            cards.forEach((card, domLoopIdx) => {
-                const relPos = domLoopIdx - scrollOffset; const absPos = Math.abs(relPos); const sign = Math.sign(relPos);
-                let xTranslate = 0; let zTranslate = 0; let rotateY = 0; let finalOpacity = 1; let zIndexVal = 50 - Math.round(absPos * 10); let isCardVisible = true;
-
-                if (isMobile) {
-                    if (absPos > 1.1) { finalOpacity = 0; isCardVisible = false; } else {
-                        xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = Math.max(0, 1 - (absPos * 0.95));
-                        if (finalOpacity < 0.02) { finalOpacity = 0; isCardVisible = false; }
-                    }
-                } else {
-                    if (absPos <= 1) { xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = 1 - (absPos * 0.4); } else {
-                        const excess = absPos - 1; xTranslate = sign * (xMax + (excess * 80)); zTranslate = zMax - (excess * 250); rotateY = sign * ryMax; finalOpacity = Math.max(0, 0.6 - (excess * 1.5));
-                    }
-                    if (finalOpacity < 0.01) { isCardVisible = false; }
-                }
-
-                if (isCardVisible) { card.style.display = 'flex'; card.style.transform = `translate3d(${xTranslate}px, 0px, ${zTranslate}px) rotateY(${rotateY}deg)`; card.style.opacity = finalOpacity; card.style.zIndex = zIndexVal; } else { card.style.display = 'none'; }
-            });
-        }
-
-        function triggerCardPreview(index) {
-            const data = marzoftShowcase[index]; if (!data) return;
-            document.body.style.overflow = 'hidden';
-            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
-            if (title) title.innerText = data.title;
-            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
-            gsap.killTweensOf(overlay); gsap.set(overlay, { transformOrigin: "center center", scale: 0.95, opacity: 0 }); gsap.to(overlay, { scale: 1, opacity: 1, pointerEvents: 'auto', duration: 0.5, ease: 'power3.out' });
-            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
-            const activePill = document.getElementById('pill-' + index);
-            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
-        }
-
-        function switchSandbox(index) {
-            const data = marzoftShowcase[index]; if (!data) return;
-            const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
-            if (title) title.innerText = data.title;
-            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
-            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
-            const activePill = document.getElementById('pill-' + index);
-            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
-        }
-
-        function closePreview() {
-            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe');
-            document.body.style.overflow = '';
-            gsap.to(overlay, { opacity: 0, pointerEvents: 'none', duration: 0.3, ease: 'power3.in', onComplete: () => { if (iframe) iframe.src = ''; } });
-        }
-
-        function requestFullscreenPreview() {
-            const iframe = document.getElementById('preview-iframe'); if (!iframe) return;
-            const target = iframe.parentElement;
-            if (target.requestFullscreen) { target.requestFullscreen(); } else if (target.mozRequestFullScreen) { target.mozRequestFullScreen(); } else if (target.webkitRequestFullscreen) { target.webkitRequestFullscreen(); } else if (target.msRequestFullscreen) { target.msRequestFullscreen(); }
-        }
-
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: SHOWCASE                                  //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: ABOUT US                                 //
-// ========================================================================= //
 
         // Neural Profiles Mapping (ISSUES 1 & 2 FIXED - Single line text, truncated for mobile safety)
         const neuralProfiles = {
@@ -1503,286 +1425,6 @@
             }
         }
 
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: ABOUT US                                  //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: INVITATIONS                              //
-// ========================================================================= //
-
-        function runLiveCountdown() {
-            let hours = 14; let minutes = 42; let seconds = 0;
-            setInterval(() => {
-                seconds--;
-                if (seconds < 0) { seconds = 59; minutes--; if (minutes < 0) { minutes = 59; hours--; if (hours < 0) { hours = 23; } } }
-                const hString = String(hours).padStart(2, '0'); const mString = String(minutes).padStart(2, '0'); const sString = String(seconds).padStart(2, '0');
-                document.querySelectorAll('.wedding-ticker').forEach(ticker => {
-                    ticker.innerHTML = `<span>${hString}</span><span class="colon">:</span><span>${mString}</span><span class="colon">:</span><span>${sString}</span>`;
-                });
-            }, 1000);
-        }
-
-        let currentCelebration = 'wedding';
-        function switchCelebrationTab(tab) {
-            currentCelebration = tab;
-            const tabWed = document.getElementById('tab-wedding');
-            const tabBday = document.getElementById('tab-birthday');
-            const title = document.getElementById('cel-title');
-            const desc = document.getElementById('cel-desc');
-            
-            if(tab === 'wedding') {
-                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-gold/20 text-brand-gold border border-brand-gold/30 transition-all whitespace-nowrap";
-                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
-                title.innerText = "ROYAL WEDDING";
-                title.className = "text-2xl font-extrabold text-brand-gold tracking-tight font-orbitron mb-2 transition-colors duration-300";
-                desc.innerText = "Interactive High-Ticket Invitation Concept featuring delicate gold aesthetics, fluid motion coordinates, and automated event countdowns.";
-            } else {
-                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 transition-all whitespace-nowrap";
-                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
-                title.innerText = "CELESTIAL BIRTHDAY";
-                title.className = "text-2xl font-extrabold text-brand-cyan tracking-tight font-orbitron mb-2 transition-colors duration-300";
-                desc.innerText = "Digital Spatial Experience engineered with high-frequency particle elements and glowing motion frames to deliver rich emotional interaction vectors.";
-            }
-        }
-
-        function selectCelebrationSuite() {
-            const radioId = currentCelebration === 'wedding' ? 'tier-wedding' : 'tier-birthday';
-            const radioEl = document.getElementById(radioId);
-            if (radioEl) { radioEl.checked = true; updateEstimate(); }
-
-            const scopeMod = document.getElementById('module-scope');
-            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
-            const lockState = document.getElementById('lock-state');
-            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
-            const proceedBtn = document.getElementById('proceed-btn');
-            if (proceedBtn) proceedBtn.classList.remove('hidden');
-
-            const contactSection = document.getElementById('contact');
-            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
-        }
-
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: INVITATIONS                                //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: INVESTMENT                               //
-// ========================================================================= //
-
-        const cardA = document.getElementById('cardA');
-        const cardB = document.getElementById('cardB');
-        const cardC = document.getElementById('cardC');
-
-        let slotMapping = new Map([ [cardA, 'left'], [cardB, 'center'], [cardC, 'right'] ]);
-        let isSwapping = false;
-
-        const getCoords = (slot, spreadValue) => {
-            const xOffset = isMobileDevice ? 72 : 110; 
-            const scaleFactor = isMobileDevice ? 0.75 : 1.0;
-            const zOffset = isMobileDevice ? -80 : -150; 
-
-            if (slot === 'center') return { xPercent: 0, rotationY: 0, z: (isMobileDevice ? 20 : 50) * spreadValue, scale: (1 + (0.05 * spreadValue)) * scaleFactor, opacity: 1 };
-            if (slot === 'left') return { xPercent: -xOffset * spreadValue, rotationY: (isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
-            if (slot === 'right') return { xPercent: xOffset * spreadValue, rotationY: -(isMobileDevice ? 15 : 25) * spreadValue, z: zOffset * spreadValue, scale: (1 - (0.05 * spreadValue)) * scaleFactor, opacity: spreadValue < 0.15 ? 0 : (isMobileDevice ? 0.95 : 0.85) };
-        };
-
-        function renderSlots(spreadValue = 1, animate = false, duration = 0.6) {
-            slotMapping.forEach((slot, card) => {
-                const coords = getCoords(slot, spreadValue);
-                const zIndexValue = slot === 'center' ? 30 : 10;
-
-                if (animate) {
-                    gsap.set(card, { zIndex: zIndexValue });
-                    gsap.to(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, duration: duration, overwrite: "auto", ease: "power2.out", force3D: true });
-                } else {
-                    gsap.set(card, { xPercent: coords.xPercent, rotationY: coords.rotationY, z: coords.z, scale: coords.scale, opacity: coords.opacity, zIndex: zIndexValue, force3D: true });
-                }
-            });
-        }
-
-        function updateEstimate() {
-            const selectedTier = document.querySelector('input[name="tier-choice"]:checked');
-            const labels = { 
-                start: document.getElementById('label-start'), 
-                pro: document.getElementById('label-pro'), 
-                elite: document.getElementById('label-elite'),
-                wedding: document.getElementById('label-wedding'),
-                birthday: document.getElementById('label-birthday')
-            };
-            const liveEstimate = document.getElementById('live-estimate');
-
-            if (labels.start) {
-                Object.values(labels).forEach(lbl => { 
-                    if(lbl) {
-                        lbl.classList.remove('tier-start-spatial-active', 'tier-pro-spatial-active', 'tier-elite-spatial-active', 'tier-wedding-spatial-active', 'tier-birthday-spatial-active');
-                        lbl.classList.remove('tier-start-active', 'tier-pro-active', 'tier-elite-active');
-                    }
-                });
-            }
-            if (liveEstimate) {
-                liveEstimate.classList.remove('text-brand-start', 'text-brand-neon', 'text-brand-gold', 'text-brand-cyan', 'estimate-glow-start', 'estimate-glow-pro', 'estimate-glow-elite', 'estimate-glow-wedding', 'estimate-glow-birthday');
-            }
-
-            let displayVal = "PRO TIER SELECTED";
-            if (selectedTier) {
-                if (selectedTier.value === 'start') { 
-                    displayVal = "START TIER SELECTED"; 
-                    if(labels.start) labels.start.classList.add('tier-start-spatial-active'); 
-                    if(liveEstimate) liveEstimate.classList.add('text-brand-start', 'estimate-glow-start'); 
-                } 
-                else if (selectedTier.value === 'pro') { 
-                    displayVal = "PRO TIER SELECTED"; 
-                    if(labels.pro) labels.pro.classList.add('tier-pro-spatial-active'); 
-                    if(liveEstimate) liveEstimate.classList.add('text-brand-neon', 'estimate-glow-pro'); 
-                } 
-                else if (selectedTier.value === 'elite') { 
-                    displayVal = "ELITE TIER SELECTED"; 
-                    if(labels.elite) labels.elite.classList.add('tier-elite-spatial-active'); 
-                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-gold'); 
-                }
-                else if (selectedTier.value === 'wedding') { 
-                    displayVal = "WEDDING SUITE SELECTED"; 
-                    if(labels.wedding) labels.wedding.classList.add('tier-wedding-spatial-active'); 
-                    if(liveEstimate) liveEstimate.classList.add('text-brand-gold', 'estimate-glow-wedding'); 
-                }
-                else if (selectedTier.value === 'birthday') { 
-                    displayVal = "BIRTHDAY SUITE SELECTED"; 
-                    if(labels.birthday) labels.birthday.classList.add('tier-birthday-spatial-active'); 
-                    if(liveEstimate) liveEstimate.classList.add('text-brand-cyan', 'estimate-glow-birthday'); 
-                }
-            }
-            if (liveEstimate) {
-                liveEstimate.innerText = displayVal;
-            }
-        }
-
-        let animState = { spread: 0 };
-
-        function selectTier(tierName) {
-            const tierLower = tierName.toLowerCase(); 
-            const radioEl = document.getElementById('tier-' + tierLower);
-            if (radioEl) radioEl.checked = true; updateEstimate();
-            const scopeMod = document.getElementById('module-scope');
-            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
-            const lockState = document.getElementById('lock-state');
-            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
-            const proceedBtn = document.getElementById('proceed-btn');
-            if (proceedBtn) proceedBtn.classList.remove('hidden');
-            const contactSection = document.getElementById('contact');
-            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
-        }
-
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: INVESTMENT                                //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: CONNECT                                  //
-// ========================================================================= //
-
-        function showError(errorText) {
-            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
-            panel.classList.remove('hidden', 'border-blue-500/20', 'bg-blue-950/20'); panel.classList.add('border-red-500/30', 'bg-red-950/30');
-            message.innerText = errorText; message.classList.remove('text-blue-300'); message.classList.add('text-red-400'); spinner.classList.add('hidden');
-        }
-
-        function nextModule() {
-            const name = document.getElementById('client-name').value.trim(); const phone = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
-            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
-            if(!name) { showError("Please enter your name to continue."); return; }
-            const phoneClean = phone.replace(/[^0-9]/g, '');
-            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
-
-            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
-            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
-            message.innerText = "Securing session. Directing you to Briefing Scope...";
-
-            gsap.to("#module-identity", {
-                y: -20, opacity: 0, duration: 0.5, ease: "power2.inOut",
-                onComplete: () => {
-                    document.getElementById('module-identity').style.display = 'none';
-                    const scopeModule = document.getElementById('module-scope'); scopeModule.style.display = 'block'; scopeModule.style.opacity = '0';
-                    panel.classList.add('hidden');
-                    const lockState = document.getElementById('lock-state'); 
-                    lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.add('text-green-400', 'bg-green-950/20', 'border-green-500/10');
-                    document.getElementById('console-status').innerText = "Step 2 of 2: Configure your brief";
-                    scopeModule.classList.remove('opacity-30', 'pointer-events-none');
-                    gsap.fromTo("#module-scope", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
-                }
-            });
-        }
-
-        function prevModule() {
-            const scopeModule = document.getElementById('module-scope');
-            gsap.to("#module-scope", {
-                y: 20, opacity: 0, duration: 0.5, ease: "power2.inOut",
-                onComplete: () => {
-                    scopeModule.style.display = 'none'; scopeModule.classList.add('opacity-30', 'pointer-events-none');
-                    const identityModule = document.getElementById('identity-module'); if (identityModule) { identityModule.style.display = 'block'; identityModule.style.opacity = '0'; }
-                    const moduleIdentity = document.getElementById('module-identity'); if (moduleIdentity) { moduleIdentity.style.display = 'block'; moduleIdentity.style.opacity = '0'; }
-                    const lockState = document.getElementById('lock-state'); 
-                    lockState.innerText = "Awaiting verification"; lockState.classList.add('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.remove('text-green-400', 'bg-green-950/20', 'border-green-500/10');
-                    document.getElementById('console-status').innerText = "Step 1 of 2: Let's start with who you are";
-                    gsap.fromTo("#module-identity", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
-                }
-            });
-        }
-
-        function executeIntake() {
-            const name = document.getElementById('client-name').value.trim(); const phoneNum = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
-            const selectedTierEl = document.querySelector('input[name="tier-choice"]:checked'); const selectedTier = selectedTierEl ? selectedTierEl.value.toUpperCase() : "PRO";
-            const deadline = document.getElementById('client-deadline').value.trim(); const specs = document.getElementById('client-specs').value.trim();
-            const finalEstimate = document.getElementById('live-estimate').innerText; const btn = document.getElementById('submit-btn');
-
-            if(!name) { showError("Please enter your name to continue."); return; }
-            const phoneClean = phoneNum.replace(/[^0-9]/g, '');
-            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
-            if(!deadline || !specs) { showError("Please specify your project details and target timeline."); return; }
-            
-            btn.querySelector('span').innerHTML = "Submitting brief..."; btn.disabled = true;
-            
-            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
-            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
-            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
-            message.innerText = "Brief compiled. Directing you to Lead workspace gateway...";
-            
-            const messageString = encodeURIComponent(`-- MARZOFT CONFIGURATOR INTAKE --\nName: ${name}\nPhone: ${phoneNum}\nEmail: ${email}\nSystem Core: ${selectedTier}\nTimeline Requirement: ${deadline}\nProject Details: ${specs}\nSystem Value Status: ${finalEstimate}\n-----------------------------`);
-            setTimeout(() => { window.location.href = `https://wa.me/917418873664?text=${messageString}`; }, 1500);
-        }
-
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: CONNECT                                    //
-// ========================================================================= //
-
-
-
-
-
-
-// ========================================================================= //
-// ⚡ START OF LOGIC RESTRUCTURING: DOM LOAD ORCHESTRATION                   //
-// ========================================================================= //
-
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".hero-bg img", { scale: 1.35, scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: 1.2 } });
             gsap.to(".hero-content", { opacity: 0, y: -100, scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: 0.8 } });
@@ -1859,11 +1501,210 @@
             updateEstimate();
         });
 
-// ========================================================================= //
-// 🛑 END OF LOGIC RESTRUCTURING: DOM LOAD ORCHESTRATION                     //
-// ========================================================================= //
+        function updateActiveShowcase(index) {
+            activeShowcaseIndex = index;
+            const colorMappingIdx = Math.max(0, index - 2); 
+            const progressionEl = document.getElementById('showcase-progression');
+            if (progressionEl) {
+                progressionEl.innerText = `${colorMappingIdx + 1} / 4`;
+                const progressionColors = ["#10B981", "#8B5CF6", "#3B82F6", "#E63946"];
+                progressionEl.style.color = progressionColors[colorMappingIdx];
+            }
 
+            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
+            cards.forEach((card) => {
+                const cardIdx = parseInt(card.getAttribute('data-index'));
+                if (cardIdx === index) { card.classList.add('active-focus'); card.classList.add('click-target'); } else { card.classList.remove('active-focus'); card.classList.remove('click-target'); }
+            });
+        }
 
+        function updateDeckStackProgress(scrollOffset) {
+            const cards = document.querySelectorAll('.showcase-deck .showcase-slide-card');
+            const isMobile = window.innerWidth < 768;
+            const xMax = isMobile ? 35 : 140; const zMax = isMobile ? -100 : -150; const ryMax = isMobile ? -10 : -15; 
+
+            cards.forEach((card, domLoopIdx) => {
+                const relPos = domLoopIdx - scrollOffset; const absPos = Math.abs(relPos); const sign = Math.sign(relPos);
+                let xTranslate = 0; let zTranslate = 0; let rotateY = 0; let finalOpacity = 1; let zIndexVal = 50 - Math.round(absPos * 10); let isCardVisible = true;
+
+                if (isMobile) {
+                    if (absPos > 1.1) { finalOpacity = 0; isCardVisible = false; } else {
+                        xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = Math.max(0, 1 - (absPos * 0.95));
+                        if (finalOpacity < 0.02) { finalOpacity = 0; isCardVisible = false; }
+                    }
+                } else {
+                    if (absPos <= 1) { xTranslate = relPos * xMax; zTranslate = absPos * zMax; rotateY = relPos * ryMax; finalOpacity = 1 - (absPos * 0.4); } else {
+                        const excess = absPos - 1; xTranslate = sign * (xMax + (excess * 80)); zTranslate = zMax - (excess * 250); rotateY = sign * ryMax; finalOpacity = Math.max(0, 0.6 - (excess * 1.5));
+                    }
+                    if (finalOpacity < 0.01) { isCardVisible = false; }
+                }
+
+                if (isCardVisible) { card.style.display = 'flex'; card.style.transform = `translate3d(${xTranslate}px, 0px, ${zTranslate}px) rotateY(${rotateY}deg)`; card.style.opacity = finalOpacity; card.style.zIndex = zIndexVal; } else { card.style.display = 'none'; }
+            });
+        }
+
+        function triggerCardPreview(index) {
+            const data = marzoftShowcase[index]; if (!data) return;
+            document.body.style.overflow = 'hidden';
+            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
+            if (title) title.innerText = data.title;
+            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
+            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
+            gsap.killTweensOf(overlay); gsap.set(overlay, { transformOrigin: "center center", scale: 0.95, opacity: 0 }); gsap.to(overlay, { scale: 1, opacity: 1, pointerEvents: 'auto', duration: 0.5, ease: 'power3.out' });
+            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
+            const activePill = document.getElementById('pill-' + index);
+            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
+        }
+
+        function switchSandbox(index) {
+            const data = marzoftShowcase[index]; if (!data) return;
+            const iframe = document.getElementById('preview-iframe'); const title = document.getElementById('overlay-title'); const loader = document.getElementById('preview-loader');
+            if (title) title.innerText = data.title;
+            if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
+            if (iframe) { iframe.style.opacity = '0'; iframe.src = data.url; }
+            document.querySelectorAll('.sandbox-pill').forEach(pill => { pill.classList.remove('bg-white/20', 'border-white/40', 'text-white'); pill.classList.add('border-white/10', 'text-gray-400'); });
+            const activePill = document.getElementById('pill-' + index);
+            if (activePill) { activePill.classList.remove('border-white/10', 'text-gray-400'); activePill.classList.add('bg-white/20', 'border-white/40', 'text-white'); }
+        }
+
+        function closePreview() {
+            const overlay = document.getElementById('preview-overlay'); const iframe = document.getElementById('preview-iframe');
+            document.body.style.overflow = '';
+            gsap.to(overlay, { opacity: 0, pointerEvents: 'none', duration: 0.3, ease: 'power3.in', onComplete: () => { if (iframe) iframe.src = ''; } });
+        }
+
+        function requestFullscreenPreview() {
+            const iframe = document.getElementById('preview-iframe'); if (!iframe) return;
+            const target = iframe.parentElement;
+            if (target.requestFullscreen) { target.requestFullscreen(); } else if (target.mozRequestFullScreen) { target.mozRequestFullScreen(); } else if (target.webkitRequestFullscreen) { target.webkitRequestFullscreen(); } else if (target.msRequestFullscreen) { target.msRequestFullscreen(); }
+        }
+
+        let currentCelebration = 'wedding';
+        function switchCelebrationTab(tab) {
+            currentCelebration = tab;
+            const tabWed = document.getElementById('tab-wedding');
+            const tabBday = document.getElementById('tab-birthday');
+            const title = document.getElementById('cel-title');
+            const desc = document.getElementById('cel-desc');
+            
+            if(tab === 'wedding') {
+                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-gold/20 text-brand-gold border border-brand-gold/30 transition-all whitespace-nowrap";
+                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
+                title.innerText = "ROYAL WEDDING";
+                title.className = "text-2xl font-extrabold text-brand-gold tracking-tight font-orbitron mb-2 transition-colors duration-300";
+                desc.innerText = "Interactive High-Ticket Invitation Concept featuring delicate gold aesthetics, fluid motion coordinates, and automated event countdowns.";
+            } else {
+                tabBday.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 transition-all whitespace-nowrap";
+                tabWed.className = "flex-1 py-2.5 px-2 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded-md text-gray-400 border border-transparent hover:text-white transition-all whitespace-nowrap";
+                title.innerText = "CELESTIAL BIRTHDAY";
+                title.className = "text-2xl font-extrabold text-brand-cyan tracking-tight font-orbitron mb-2 transition-colors duration-300";
+                desc.innerText = "Digital Spatial Experience engineered with high-frequency particle elements and glowing motion frames to deliver rich emotional interaction vectors.";
+            }
+        }
+
+        function selectCelebrationSuite() {
+            const radioId = currentCelebration === 'wedding' ? 'tier-wedding' : 'tier-birthday';
+            const radioEl = document.getElementById(radioId);
+            if (radioEl) { radioEl.checked = true; updateEstimate(); }
+
+            const scopeMod = document.getElementById('module-scope');
+            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
+            const lockState = document.getElementById('lock-state');
+            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
+            const proceedBtn = document.getElementById('proceed-btn');
+            if (proceedBtn) proceedBtn.classList.remove('hidden');
+
+            const contactSection = document.getElementById('contact');
+            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
+        }
+
+        function selectTier(tierName) {
+            const tierLower = tierName.toLowerCase(); 
+            const radioEl = document.getElementById('tier-' + tierLower);
+            if (radioEl) radioEl.checked = true; updateEstimate();
+            const scopeMod = document.getElementById('module-scope');
+            if (scopeMod) { scopeMod.classList.remove('opacity-30', 'pointer-events-none'); scopeMod.classList.add('opacity-100', 'pointer-events-auto'); }
+            const lockState = document.getElementById('lock-state');
+            if (lockState) { lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400'); lockState.classList.add('text-green-400'); }
+            const proceedBtn = document.getElementById('proceed-btn');
+            if (proceedBtn) proceedBtn.classList.remove('hidden');
+            const contactSection = document.getElementById('contact');
+            if (contactSection) { gsap.to(window, {scrollTo: "#contact", duration: 1.0, ease: "power3.inOut"}); }
+        }
+
+        function showError(errorText) {
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            panel.classList.remove('hidden', 'border-blue-500/20', 'bg-blue-950/20'); panel.classList.add('border-red-500/30', 'bg-red-950/30');
+            message.innerText = errorText; message.classList.remove('text-blue-300'); message.classList.add('text-red-400'); spinner.classList.add('hidden');
+        }
+
+        function nextModule() {
+            const name = document.getElementById('client-name').value.trim(); const phone = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            if(!name) { showError("Please enter your name to continue."); return; }
+            const phoneClean = phone.replace(/[^0-9]/g, '');
+            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
+
+            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
+            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
+            message.innerText = "Securing session. Directing you to Briefing Scope...";
+
+            gsap.to("#module-identity", {
+                y: -20, opacity: 0, duration: 0.5, ease: "power2.inOut",
+                onComplete: () => {
+                    document.getElementById('module-identity').style.display = 'none';
+                    const scopeModule = document.getElementById('module-scope'); scopeModule.style.display = 'block'; scopeModule.style.opacity = '0';
+                    panel.classList.add('hidden');
+                    const lockState = document.getElementById('lock-state'); 
+                    lockState.innerText = "Brief unlocked"; lockState.classList.remove('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.add('text-green-400', 'bg-green-950/20', 'border-green-500/10');
+                    document.getElementById('console-status').innerText = "Step 2 of 2: Configure your brief";
+                    scopeModule.classList.remove('opacity-30', 'pointer-events-none');
+                    gsap.fromTo("#module-scope", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
+                }
+            });
+        }
+
+        function prevModule() {
+            const scopeModule = document.getElementById('module-scope');
+            gsap.to("#module-scope", {
+                y: 20, opacity: 0, duration: 0.5, ease: "power2.inOut",
+                onComplete: () => {
+                    scopeModule.style.display = 'none'; scopeModule.classList.add('opacity-30', 'pointer-events-none');
+                    const identityModule = document.getElementById('identity-module'); if (identityModule) { identityModule.style.display = 'block'; identityModule.style.opacity = '0'; }
+                    const moduleIdentity = document.getElementById('module-identity'); if (moduleIdentity) { moduleIdentity.style.display = 'block'; moduleIdentity.style.opacity = '0'; }
+                    const lockState = document.getElementById('lock-state'); 
+                    lockState.innerText = "Awaiting verification"; lockState.classList.add('text-red-400', 'bg-red-950/20', 'border-red-500/10'); lockState.classList.remove('text-green-400', 'bg-green-950/20', 'border-green-500/10');
+                    document.getElementById('console-status').innerText = "Step 1 of 2: Let's start with who you are";
+                    gsap.fromTo("#module-identity", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "cubic-bezier(0.16, 1, 0.3, 1)", clearProps: "transform" });
+                }
+            });
+        }
+
+        function executeIntake() {
+            const name = document.getElementById('client-name').value.trim(); const phoneNum = document.getElementById('client-phone').value; const email = document.getElementById('client-email').value.trim();
+            const selectedTierEl = document.querySelector('input[name="tier-choice"]:checked'); const selectedTier = selectedTierEl ? selectedTierEl.value.toUpperCase() : "PRO";
+            const deadline = document.getElementById('client-deadline').value.trim(); const specs = document.getElementById('client-specs').value.trim();
+            const finalEstimate = document.getElementById('live-estimate').innerText; const btn = document.getElementById('submit-btn');
+
+            if(!name) { showError("Please enter your name to continue."); return; }
+            const phoneClean = phoneNum.replace(/[^0-9]/g, '');
+            if(phoneClean.length < 10) { showError("Please enter a valid 10-digit phone number."); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email)) { showError("Please enter a valid email address."); return; }
+            if(!deadline || !specs) { showError("Please specify your project details and target timeline."); return; }
+            
+            btn.querySelector('span').innerHTML = "Submitting brief..."; btn.disabled = true;
+            
+            const panel = document.getElementById('handshake-panel'); const message = document.getElementById('handshake-message'); const spinner = document.getElementById('loader-spinner');
+            panel.classList.remove('hidden', 'border-red-500/30', 'bg-red-950/30'); panel.classList.add('minimal-alert-bar');
+            spinner.classList.remove('hidden'); message.classList.remove('text-red-400'); message.classList.add('text-blue-300');
+            message.innerText = "Brief compiled. Directing you to Lead workspace gateway...";
+            
+            const messageString = encodeURIComponent(`-- MARZOFT CONFIGURATOR INTAKE --\nName: ${name}\nPhone: ${phoneNum}\nEmail: ${email}\nSystem Core: ${selectedTier}\nTimeline Requirement: ${deadline}\nProject Details: ${specs}\nSystem Value Status: ${finalEstimate}\n-----------------------------`);
+            setTimeout(() => { window.location.href = `https://wa.me/917418873664?text=${messageString}`; }, 1500);
+        }
     </script>
 </body>
 </html>
