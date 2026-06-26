@@ -1011,7 +1011,15 @@
                     <div class="mt-12 border-t border-white/5 pt-8 text-[11px] text-gray-400 tracking-wide w-full leading-relaxed">
                         <p class="text-white font-semibold mb-2 uppercase tracking-widest text-xs">MARZOFT TECHNOLOGIES QUALITY ASSURANCE:</p>
                         <p class="mb-3">Every project is built and optimized directly on our "Precision Code" framework, guaranteeing elite speeds and sub-second load times.</p>
-                        <p class="text-indigo-400 font-bold">Absolute clarity. Transparent timelines. Salem to the global stage.</p>
+                        <p class="text-indigo-400 font-bold mb-8">Absolute clarity. Transparent timelines. Salem to the global stage.</p>
+                        
+                        <div class="flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-[9px] uppercase tracking-wider font-bold border-t border-white/5 pt-6">
+                            <a href="privacy-policy.html" class="text-gray-500 hover:text-brand-neon transition-colors duration-300">[ Privacy Policy ]</a>
+                            <a href="terms-of-service.html" class="text-gray-500 hover:text-brand-neon transition-colors duration-300">[ Terms of Service ]</a>
+                            <a href="refund-policy.html" class="text-gray-500 hover:text-brand-neon transition-colors duration-300">[ Refund & Cancellation ]</a>
+                            <a href="cookie-policy.html" class="text-gray-500 hover:text-brand-neon transition-colors duration-300">[ Cookie & Storage ]</a>
+                            <span class="text-gray-600 ml-auto">&copy; 2026 MARZOFT</span>
+                        </div>
                     </div>
 
                 </div>
@@ -1020,7 +1028,6 @@
 <!-- ========================================================================= -->
 <!-- 🛑 END OF SECTION: SECTION 6 - CONNECT                                    -->
 <!-- ========================================================================= -->
-
 
         </main>
     </div>
@@ -1037,11 +1044,17 @@
         const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-        document.querySelectorAll('nav a').forEach(anchor => {
+        
+        // Target nav links and any other anchor links globally
+        document.querySelectorAll('nav a, a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
-                gsap.to(window, { scrollTo: {y: targetId, autoKill: false}, duration: 1, ease: "power3.inOut" });
+                
+                // STRICT CHECK: Only hijack the click if it's an internal anchor hash
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    gsap.to(window, { scrollTo: {y: targetId, autoKill: false}, duration: 1, ease: "power3.inOut" });
+                }
             });
         });
 
